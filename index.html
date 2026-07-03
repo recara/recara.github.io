@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danil Gneushev — ML Engineer</title>
+<meta name="description" content="Danil Gneushev — ML Engineer, Python Developer, Data Scientist. Portfolio, projects and contacts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e16; --bg2:#0f1520; --card:#121a27; --line:#1e2937;
+    --txt:#e6edf6; --muted:#8b97a8; --dim:#5c6675;
+    --acc:#4d9dff; --acc2:#7bd0c1; --accdim:#1c3a5e;
+    --mono:'JetBrains Mono',monospace; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  .mono{font-family:var(--mono)}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,14,22,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:var(--mono);font-weight:500;font-size:15px;color:var(--txt)}
+  .brand span{color:var(--acc)}
+  .nav-right{display:flex;align-items:center;gap:22px}
+  .nav-links{display:flex;gap:22px}
+  .nav-links a{font-size:14px;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--txt)}
+  .lang{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+  .lang button{font-family:var(--mono);background:transparent;color:var(--muted);border:none;padding:5px 10px;font-size:12px;cursor:pointer;transition:all .2s}
+  .lang button.on{background:var(--acc);color:#04101f}
+
+  .hero{position:relative;padding:96px 0 80px}
+  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:640px;height:640px;background:radial-gradient(circle,rgba(77,157,255,.10),transparent 62%);pointer-events:none}
+  .kicker{font-family:var(--mono);font-size:13px;color:var(--acc);letter-spacing:.04em;margin-bottom:20px}
+  .kicker::before{content:"> ";color:var(--acc2)}
+  h1{font-size:clamp(38px,7vw,66px);font-weight:700;line-height:1.05;letter-spacing:-.02em;margin-bottom:18px}
+  .role{font-size:clamp(17px,2.6vw,22px);color:var(--muted);font-weight:500;margin-bottom:24px}
+  .role b{color:var(--acc2);font-weight:500}
+  .lede{font-size:17px;color:var(--muted);max-width:620px;margin-bottom:34px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:11px 18px;border-radius:9px;border:1px solid var(--line);transition:all .2s}
+  .btn:hover{border-color:var(--acc);transform:translateY(-1px)}
+  .btn.pri{background:var(--acc);color:#04101f;border-color:var(--acc)}
+  .btn.pri:hover{background:#63acff}
+  .btn svg{width:16px;height:16px}
+
+  section{padding:64px 0;border-top:1px solid var(--line)}
+  .sec-label{font-family:var(--mono);font-size:13px;color:var(--dim);margin-bottom:8px}
+  .sec-label::before{content:"// "}
+  h2{font-size:clamp(24px,4vw,32px);font-weight:600;letter-spacing:-.01em;margin-bottom:28px}
+
+  .about p{font-size:17px;color:var(--muted);max-width:720px;margin-bottom:16px}
+  .about p b{color:var(--txt);font-weight:500}
+
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .skill h3{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .skill h3 i{width:7px;height:7px;border-radius:50%;background:var(--acc);display:inline-block}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+
+  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .proj{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;transition:all .2s;position:relative}
+  .proj:hover{border-color:var(--accdim);transform:translateY(-3px)}
+  .proj .top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:10px}
+  .proj h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
+  .proj .tag{font-family:var(--mono);font-size:11px;color:var(--acc2);border:1px solid var(--line);border-radius:20px;padding:3px 10px;white-space:nowrap}
+  .proj p{font-size:14.5px;color:var(--muted);margin-bottom:16px;flex:1}
+  .proj .stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .proj .stack span{font-family:var(--mono);font-size:11px;color:var(--dim)}
+  .proj .link{font-size:13px;font-weight:500;color:var(--acc);display:inline-flex;align-items:center;gap:5px}
+  .proj .link.muted{color:var(--dim)}
+  .proj .link svg{width:13px;height:13px}
+
+  .ach{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .aw{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .aw .yr{font-family:var(--mono);font-size:12px;color:var(--acc);padding-top:2px;white-space:nowrap}
+  .aw .txt{font-size:14.5px}
+  .aw .txt b{font-weight:600}
+  .aw .txt span{color:var(--muted);font-size:13px;display:block;margin-top:2px}
+
+  .contact{text-align:center;padding:72px 0}
+  .contact h2{margin-bottom:12px}
+  .contact p{color:var(--muted);margin-bottom:28px;font-size:17px}
+  .contact .cta{justify-content:center}
+  footer{border-top:1px solid var(--line);padding:28px 0;text-align:center}
+  footer p{font-family:var(--mono);font-size:12px;color:var(--dim)}
+
+  [data-lang-ru]{display:none}
+  body.ru [data-lang-en]{display:none}
+  body.ru [data-lang-ru]{display:revert}
+  @media(max-width:640px){.nav-links{display:none}.hero{padding:64px 0 56px}section{padding:52px 0}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">recara<span>.dev</span></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about" data-lang-en>About</a><a href="#about" data-lang-ru>О себе</a>
+        <a href="#projects" data-lang-en>Projects</a><a href="#projects" data-lang-ru>Проекты</a>
+        <a href="#awards" data-lang-en>Awards</a><a href="#awards" data-lang-ru>Награды</a>
+        <a href="#contact" data-lang-en>Contact</a><a href="#contact" data-lang-ru>Контакты</a>
+      </div>
+      <div class="lang">
+        <button id="en" class="on" onclick="setLang('en')">EN</button>
+        <button id="ru" onclick="setLang('ru')">RU</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="kicker" data-lang-en>ML Engineer · Python Developer · Data Scientist</div>
+    <div class="kicker" data-lang-ru>ML-инженер · Python-разработчик · Data Scientist</div>
+    <h1 data-lang-en>Danil Gneushev</h1>
+    <h1 data-lang-ru>Гнеушев Данил</h1>
+    <p class="role" data-lang-en>I turn data and messy production systems into <b>working ML and backends</b>.</p>
+    <p class="role" data-lang-ru>Превращаю данные и запутанные production-системы в <b>работающий ML и бэкенды</b>.</p>
+    <p class="lede" data-lang-en>From research notebook to a running API: ML pipelines, FastAPI backends with local LLMs and RAG, 1C integrations, and Kaggle-grade modeling. Currently at DA&nbsp;|&nbsp;Studio, studying Software Engineering at FEFU.</p>
+    <p class="lede" data-lang-ru>От исследовательского ноутбука до рабочего API: ML-пайплайны, бэкенды на FastAPI с локальными LLM и RAG, интеграции с 1С и Kaggle-моделирование. Сейчас в DA&nbsp;|&nbsp;Studio, учусь на «Программной инженерии» в ДВФУ.</p>
+    <div class="cta">
+      <a href="https://github.com/recara" class="btn pri" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 015 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.35 4.81-4.58 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.02 10.02 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
+        GitHub
+      </a>
+      <a href="https://t.me/byUnleash" class="btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3.3 15.6c-.24 1.1-.9 1.37-1.83.85l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1.02.5l.36-5.13L18.3 6.2c.4-.36-.09-.56-.62-.2L6.68 13.1l-4.9-1.53c-1.06-.33-1.08-1.06.22-1.57l19.1-7.37c.9-.33 1.68.2 1.4 1.7z"/></svg>
+        Telegram
+      </a>
+      <a href="resume.pdf" class="btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>
+        <span data-lang-en>Resume</span><span data-lang-ru>Резюме</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="sec-label">about</div>
+    <h2 data-lang-en>Who I am</h2>
+    <h2 data-lang-ru>Кто я</h2>
+    <p data-lang-en>Junior ML engineer and Python developer with a broad practical base — from classical machine learning and Kaggle competitions to production backends on FastAPI and full-stack TypeScript apps. Over the past year I shipped <b>10+ projects</b>: ML pipelines, CV models, AI bots with RAG on local LLMs, and real client web platforms.</p>
+    <p data-lang-ru>Junior ML-инженер и Python-разработчик с широкой практической базой — от классического ML и Kaggle-соревнований до production-бэкендов на FastAPI и full-stack приложений на TypeScript. За последний год реализовал <b>10+ проектов</b>: ML-пайплайны, CV-модели, AI-боты с RAG на локальных LLM и реальные клиентские веб-платформы.</p>
+    <p data-lang-en>Since September 2025 I work at <b>DA&nbsp;|&nbsp;Studio</b>, running technical support and development of commercial web projects: production incident diagnostics, 1C integrations, SEO and performance. I care about reproducible, interpretable and maintainable code.</p>
+    <p data-lang-ru>С сентября 2025 работаю в <b>DA&nbsp;|&nbsp;Studio</b> — веду техническое сопровождение и развитие коммерческих веб-проектов: диагностику production-инцидентов, интеграции с 1С, SEO и производительность. Ценю воспроизводимый, интерпретируемый и поддерживаемый код.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-label">stack</div>
+    <h2 data-lang-en>Skills &amp; tools</h2>
+    <h2 data-lang-ru>Навыки и инструменты</h2>
+    <div class="skills">
+      <div class="skill">
+        <h3><i></i>Machine Learning</h3>
+        <div class="chips"><span class="chip">scikit-learn</span><span class="chip">XGBoost</span><span class="chip">CatBoost</span><span class="chip">LightGBM</span><span class="chip">SHAP</span><span class="chip">Optuna</span></div>
+      </div>
+      <div class="skill">
+        <h3><i></i><span data-lang-en>Data</span><span data-lang-ru>Данные</span></h3>
+        <div class="chips"><span class="chip">pandas</span><span class="chip">numpy</span><span class="chip">matplotlib</span><span class="chip">seaborn</span><span class="chip">Parquet</span><span class="chip">SQL</span></div>
+      </div>
+      <div class="skill">
+        <h3><i></i>Backend</h3>
+        <div class="chips"><span class="chip">Python 3.12</span><span class="chip">FastAPI</span><span class="chip">aiogram 3</span><span class="chip">PostgreSQL</span><span class="chip">pgvector</span><span class="chip">Ollama</span><span class="chip">RAG</span></div>
+      </div>
+      <div class="skill">
+        <h3><i></i>Web</h3>
+        <div class="chips"><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">Flask</span><span class="chip">YandexGPT</span></div>
+      </div>
+      <div class="skill">
+        <h3><i></i><span data-lang-en>Infra</span><span data-lang-ru>Инфраструктура</span></h3>
+        <div class="chips"><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">nginx</span><span class="chip">1C</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-label">work</div>
+    <h2 data-lang-en>Selected projects</h2>
+    <h2 data-lang-ru>Избранные проекты</h2>
+    <div class="projects">
+
+      <div class="proj">
+        <div class="top"><h3>AI bot</h3><div class="tag">FastAPI · RAG</div></div>
+        <p data-lang-en>Backend for a utility-service assistant on FastAPI + aiogram 3 with local LLM inference (Ollama) and RAG. Deterministic FSM flows kept separate from AI intent classification — the LLM never touches billing or decisions.</p>
+        <p data-lang-ru>Бэкенд ассистента для ЖКХ-сервиса на FastAPI + aiogram 3 с локальным LLM (Ollama) и RAG. Детерминированные FSM-сценарии отделены от AI-классификации — LLM не участвует в расчётах и решениях.</p>
+        <div class="stack"><span>Python 3.12 · FastAPI · aiogram · PostgreSQL · pgvector · Ollama</span></div>
+        <span class="link muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span data-lang-en>Private repo</span><span data-lang-ru>Приватный репозиторий</span></span>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>Trader MVP</h3><div class="tag">TypeScript</div></div>
+        <p data-lang-en>Production-ready fintech MVP: JWT + Argon2id auth with refresh tokens, 3 business scenarios, notifications, RU/ZH localization (150+ keys), 100% type-safe TypeScript, Docker deploy.</p>
+        <p data-lang-ru>Production-ready fintech MVP: авторизация JWT + Argon2id с refresh-токенами, 3 бизнес-сценария, уведомления, локализация RU/ZH (150+ ключей), 100% типобезопасный TypeScript, деплой в Docker.</p>
+        <div class="stack"><span>Express · TypeScript · Prisma · React 18 · Vite · Docker</span></div>
+        <span class="link muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span data-lang-en>Private repo</span><span data-lang-ru>Приватный репозиторий</span></span>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>YOLOv8 segmentation</h3><div class="tag">CV</div></div>
+        <p data-lang-en>Instance segmentation on a custom dataset with YOLOv8, plus a COCO→YOLOv8 annotation converter and training pipeline.</p>
+        <p data-lang-ru>Instance segmentation на кастомном датасете (YOLOv8) с конвертером разметки COCO→YOLOv8 и пайплайном обучения.</p>
+        <div class="stack"><span>Python · YOLOv8 · Ultralytics · COCO</span></div>
+        <a class="link" href="https://github.com/recara/ods-ai-yolov8-segmentation" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>github.com/recara</a>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>Data Fusion 2026</h3><div class="tag">ML</div></div>
+        <p data-lang-en>Solution for the "Страж" task of Data Fusion Contest 2026 — ML modeling on tabular data with exploration and submission pipeline.</p>
+        <p data-lang-ru>Решение задачи «Страж» Data Fusion Contest 2026 — ML на табличных данных с исследованием и пайплайном сабмита.</p>
+        <div class="stack"><span>Python · pandas · scikit-learn</span></div>
+        <a class="link" href="https://github.com/recara/data-fusion-contest-2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>github.com/recara</a>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>E-CUP 2025</h3><div class="tag">RecSys</div></div>
+        <p data-lang-en>Recommender-system challenge on Ozon data — training and fine-tuning recsys models, baseline and stacking experiments.</p>
+        <p data-lang-ru>Соревнование по рекомендательным системам на данных Ozon — обучение и файнтюнинг recsys-моделей, baseline и stacking.</p>
+        <div class="stack"><span>Python · pandas · ML</span></div>
+        <a class="link" href="https://github.com/recara/e-cup-2025-ml-challenge" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>github.com/recara</a>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3><span data-lang-en>SEO clustering</span><span data-lang-ru>SEO-кластеризация</span></h3><div class="tag">NLP</div></div>
+        <p data-lang-en>Offline clustering of competitor search queries with local multilingual embeddings, HDBSCAN, representative-key selection and embedding cache.</p>
+        <p data-lang-ru>Офлайн-кластеризация поисковых запросов конкурентов: локальные мультиязычные эмбеддинги, HDBSCAN, выбор ключа кластера, кэш эмбеддингов.</p>
+        <div class="stack"><span>Python · sentence-transformers · HDBSCAN</span></div>
+        <span class="link muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span data-lang-en>Private repo</span><span data-lang-ru>Приватный репозиторий</span></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="wrap">
+    <div class="sec-label">achievements</div>
+    <h2 data-lang-en>Awards &amp; competitions</h2>
+    <h2 data-lang-ru>Награды и соревнования</h2>
+    <div class="ach">
+      <div class="aw"><div class="yr">WIN</div><div class="txt"><div data-lang-en><b>National Treasure of Russia</b><span>Winner, regional &amp; final stages · Informatics &amp; ICT</span></div><div data-lang-ru><b>Национальное Достояние России</b><span>Победитель регионального и заключительного этапов · Информатика и ИКТ</span></div></div></div>
+      <div class="aw"><div class="yr">#4</div><div class="txt"><div data-lang-en><b>Sirius.AI · BioCAD</b><span>4th place — "AI: Artificial Intelligence" program</span></div><div data-lang-ru><b>Sirius.AI · BioCAD</b><span>4 место — программа «Сириус. ИИ: Искусственный интеллект»</span></div></div></div>
+      <div class="aw"><div class="yr">FIN</div><div class="txt"><div data-lang-en><b>MTS True Tech</b><span>Finalist · Algorithms track</span></div><div data-lang-ru><b>MTS True Tech</b><span>Финалист · трек «Алгоритмы»</span></div></div></div>
+      <div class="aw"><div class="yr">1/2</div><div class="txt"><div data-lang-en><b>Deadline · T1 Genii</b><span>Semifinalist</span></div><div data-lang-ru><b>Deadline · T1 Genii</b><span>Полуфиналист</span></div></div></div>
+      <div class="aw"><div class="yr">ML</div><div class="txt"><div data-lang-en><b>Avito ML Cup 2025</b><span>"Duplicate search" hackathon participant</span></div><div data-lang-ru><b>Avito ML Cup 2025</b><span>Участник хакатона «Поиск дублей»</span></div></div></div>
+      <div class="aw"><div class="yr">IT</div><div class="txt"><div data-lang-en><b>IT Buryatia Future</b><span>4th place (2024) · Finalist AI track (2025)</span></div><div data-lang-ru><b>Мы — будущее IT Бурятии</b><span>4 место (2024) · финалист трека ИИ (2025)</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2 data-lang-en>Let's talk</h2>
+    <h2 data-lang-ru>Давайте на связи</h2>
+    <p data-lang-en>Open to ML engineer / Python developer roles and interesting projects.</p>
+    <p data-lang-ru>Открыт к позициям ML-инженера / Python-разработчика и интересным проектам.</p>
+    <div class="cta">
+      <a href="https://t.me/byUnleash" class="btn pri" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3.3 15.6c-.24 1.1-.9 1.37-1.83.85l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1.02.5l.36-5.13L18.3 6.2c.4-.36-.09-.56-.62-.2L6.68 13.1l-4.9-1.53c-1.06-.33-1.08-1.06.22-1.57l19.1-7.37c.9-.33 1.68.2 1.4 1.7z"/></svg>
+        Telegram @byUnleash
+      </a>
+      <a href="https://github.com/recara" class="btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 015 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.35 4.81-4.58 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.02 10.02 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
+        github.com/recara
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><p>© 2026 Danil Gneushev · built &amp; hosted on GitHub Pages</p></div>
+</footer>
+
+<script>
+  function setLang(l){
+    document.body.classList.toggle('ru', l==='ru');
+    document.documentElement.lang = l;
+    document.getElementById('en').classList.toggle('on', l==='en');
+    document.getElementById('ru').classList.toggle('on', l==='ru');
+    try{ localStorage.setItem('lang', l); }catch(e){}
+  }
+  (function(){
+    var saved=null;
+    try{ saved = localStorage.getItem('lang'); }catch(e){}
+    if(saved!=='en' && saved!=='ru'){
+      saved = (navigator.language||'').slice(0,2)==='ru' ? 'ru' : 'en';
+    }
+    setLang(saved);
+  })();
+</script>
+</body>
+</html>
