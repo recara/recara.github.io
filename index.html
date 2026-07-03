@@ -7,264 +7,247 @@
 <meta name="description" content="Danil Gneushev — ML Engineer, Python Developer, Data Scientist. Portfolio, projects and contacts.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#06080e; --bg2:#0b1019; --card:rgba(20,28,42,.55); --line:rgba(120,150,190,.14);
-    --txt:#eaf1fb; --muted:#93a1b8; --dim:#5a6579;
-    --acc:#5aa2ff; --acc2:#54e0c7; --acc3:#a98bff;
-    --mono:'JetBrains Mono',monospace; --head:'Sora',sans-serif; --sans:'Inter',system-ui,sans-serif;
+    --bg:#0a0a0c; --pane:#0e0e11; --ink:#f2f0ea; --mut:#8b897f; --dim:#565349;
+    --acc:#c9f24e; --line:rgba(180,178,165,.13);
+    --disp:'Bricolage Grotesque',sans-serif; --serif:'Instrument Serif',serif;
+    --mono:'JetBrains Mono',monospace; --sans:'Inter',system-ui,sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:default}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 26px;position:relative;z-index:2}
+  ::selection{background:var(--acc);color:#0a0a0c}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px);position:relative;z-index:2}
   .mono{font-family:var(--mono)}
 
-  #net{position:fixed;inset:0;z-index:0;pointer-events:none}
-  .aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.32;mix-blend-mode:screen}
-  .b1{width:520px;height:520px;background:#2b6cff;top:-160px;left:-120px;animation:float1 18s ease-in-out infinite}
-  .b2{width:460px;height:460px;background:#17b7a0;bottom:-160px;right:-120px;animation:float2 22s ease-in-out infinite}
-  .b3{width:400px;height:400px;background:#7d5cff;top:40%;left:55%;animation:float3 26s ease-in-out infinite}
-  @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,120px)}}
-  @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-100px,-80px)}}
-  @keyframes float3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,60px) scale(1.15)}}
+  .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .cur,.curd{position:fixed;top:0;left:0;z-index:70;pointer-events:none;border-radius:50%;mix-blend-mode:difference}
+  .cur{width:40px;height:40px;border:1px solid #fff;margin:-20px 0 0 -20px;transition:width .25s,height .25s,margin .25s,opacity .25s}
+  .curd{width:5px;height:5px;background:#fff;margin:-2.5px 0 0 -2.5px}
+  .cur.big{width:76px;height:76px;margin:-38px 0 0 -38px}
+  body.touch .cur,body.touch .curd{display:none}
 
-  #glow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(90,162,255,.10),transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:opacity .4s;opacity:0}
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,border-color .4s}
+  nav.on{background:rgba(10,10,12,.7);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.02em;color:var(--ink)}
+  .brand b{color:var(--acc);font-weight:500}
+  .nav-right{display:flex;align-items:center;gap:30px}
+  .nav-links{display:flex;gap:26px}
+  .nav-links a{font-family:var(--mono);font-size:12.5px;color:var(--mut);transition:color .25s}
+  .nav-links a .i{color:var(--dim);margin-right:5px}
+  .nav-links a:hover{color:var(--ink)}
+  .lang{display:flex;gap:2px}
+  .lang button{font-family:var(--mono);background:transparent;color:var(--dim);border:none;padding:4px 6px;font-size:12px;cursor:pointer;transition:color .2s}
+  .lang button.on{color:var(--acc)}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .35s;border-bottom:1px solid transparent}
-  nav.scrolled{background:rgba(6,8,14,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;transition:height .35s}
-  nav.scrolled .wrap{height:56px}
-  .brand{font-family:var(--mono);font-weight:500;font-size:15px;letter-spacing:-.01em}
-  .brand b{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:500}
-  .nav-right{display:flex;align-items:center;gap:24px}
-  .nav-links{display:flex;gap:24px}
-  .nav-links a{font-size:14px;color:var(--muted);transition:color .2s;position:relative}
-  .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1.5px;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width .25s}
-  .nav-links a:hover{color:var(--txt)}
-  .nav-links a:hover::after{width:100%}
-  .lang{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.02)}
-  .lang button{font-family:var(--mono);background:transparent;color:var(--muted);border:none;padding:6px 11px;font-size:12px;cursor:pointer;transition:all .2s}
-  .lang button.on{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#04101f;font-weight:500}
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px}
+  .hgrid{display:grid;grid-template-columns:1.35fr .95fr;gap:56px;align-items:center;width:100%}
+  .htop{font-family:var(--mono);font-size:12.5px;color:var(--dim);display:flex;justify-content:space-between;margin-bottom:34px;border-bottom:1px solid var(--line);padding-bottom:12px}
+  .htop .r{color:var(--mut)}
+  h1{font-family:var(--disp);font-weight:700;font-size:clamp(52px,9vw,118px);line-height:.9;letter-spacing:-.035em;margin-bottom:26px}
+  h1 .l2{color:var(--mut)}
+  .role{font-family:var(--disp);font-size:clamp(19px,2.6vw,30px);font-weight:500;letter-spacing:-.01em;margin-bottom:20px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .role .rot{color:var(--acc);font-family:var(--mono);font-weight:400;font-size:.82em}
+  .tag{font-family:var(--serif);font-size:clamp(19px,2.4vw,26px);color:var(--mut);font-style:italic;max-width:560px;margin-bottom:38px;line-height:1.35}
+  .tag em{color:var(--ink);font-style:italic}
+  .cta{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:13px;padding:13px 20px;border-radius:2px;border:1px solid var(--line);transition:border-color .25s,color .25s;will-change:transform}
+  .btn .a{transition:transform .25s}
+  .btn:hover{border-color:var(--ink)}
+  .btn:hover .a{transform:translate(3px,-3px)}
+  .btn.pri{background:var(--acc);color:#0a0a0c;border-color:var(--acc);font-weight:500}
+  .btn svg{width:15px;height:15px}
 
-  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px}
-  .badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12.5px;color:var(--acc2);border:1px solid var(--line);border-radius:30px;padding:7px 14px;margin-bottom:26px;background:rgba(84,224,199,.05)}
-  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--acc2);box-shadow:0 0 0 0 rgba(84,224,199,.5);animation:pulse 2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(84,224,199,.45)}70%{box-shadow:0 0 0 9px rgba(84,224,199,0)}100%{box-shadow:0 0 0 0 rgba(84,224,199,0)}}
-  h1{font-family:var(--head);font-size:clamp(44px,8.5vw,88px);font-weight:800;line-height:1;letter-spacing:-.03em;margin-bottom:22px;position:relative}
-  h1 .grad{background:linear-gradient(100deg,var(--acc) 0%,var(--acc2) 45%,var(--acc3) 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 6s linear infinite}
-  @keyframes shine{to{background-position:200% center}}
-  .type-wrap{font-family:var(--head);font-size:clamp(18px,3vw,26px);font-weight:600;color:var(--txt);margin-bottom:24px;min-height:1.4em}
-  .type{color:var(--acc2)}
-  .cursor{display:inline-block;width:2px;height:1em;background:var(--acc2);margin-left:2px;vertical-align:-2px;animation:blink 1s steps(2) infinite}
-  @keyframes blink{50%{opacity:0}}
-  .lede{font-size:17.5px;color:var(--muted);max-width:640px;margin-bottom:36px}
-  .cta{display:flex;flex-wrap:wrap;gap:13px}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:500;padding:12px 20px;border-radius:11px;border:1px solid var(--line);transition:all .25s;background:rgba(255,255,255,.02)}
-  .btn:hover{border-color:rgba(90,162,255,.5);transform:translateY(-2px);box-shadow:0 8px 30px rgba(90,162,255,.12)}
-  .btn.pri{background:linear-gradient(100deg,var(--acc),var(--acc2));color:#04101f;border:none;font-weight:600}
-  .btn.pri:hover{box-shadow:0 10px 34px rgba(84,224,199,.28)}
-  .btn svg{width:16px;height:16px}
+  .viz{border:1px solid var(--line);border-radius:3px;background:var(--pane);position:relative;aspect-ratio:1/1;overflow:hidden}
+  .viz canvas{position:absolute;inset:0;width:100%;height:100%}
+  .viz .cap{position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:11px;color:var(--dim);z-index:2}
+  .viz .cap b{color:var(--acc);font-weight:400}
+  .viz .cr{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:11px;color:var(--dim);z-index:2}
 
-  .stats{display:flex;gap:36px;flex-wrap:wrap;margin-top:52px}
-  .stat .n{font-family:var(--head);font-size:34px;font-weight:700;background:linear-gradient(100deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
-  .stat .l{font-size:13px;color:var(--dim);margin-top:5px}
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:22px 0}
+  .strip .tk{display:inline-block;animation:mv 34s linear infinite}
+  .strip span{font-family:var(--disp);font-weight:600;font-size:clamp(26px,4vw,46px);letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px var(--dim);margin:0 26px}
+  .strip span.f{color:var(--ink);-webkit-text-stroke:0}
+  @keyframes mv{to{transform:translateX(-50%)}}
 
-  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;overflow:hidden;white-space:nowrap;background:rgba(255,255,255,.015);position:relative;z-index:2}
-  .marquee .track{display:inline-block;animation:scroll 26s linear infinite}
-  .marquee span{font-family:var(--mono);font-size:14px;color:var(--muted);margin:0 26px}
-  .marquee span b{color:var(--acc);font-weight:400}
-  @keyframes scroll{to{transform:translateX(-50%)}}
+  section{padding:clamp(80px,11vw,150px) 0;position:relative;z-index:2}
+  .shead{display:flex;align-items:baseline;gap:16px;margin-bottom:56px}
+  .snum{font-family:var(--mono);font-size:13px;color:var(--acc)}
+  h2{font-family:var(--disp);font-size:clamp(30px,5.5vw,60px);font-weight:600;letter-spacing:-.03em;line-height:.95}
+  .rv{overflow:hidden;display:inline-block;vertical-align:top}
+  .rv>span{display:inline-block;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1)}
+  .rv.in>span{transform:none}
 
-  section{padding:96px 0;position:relative;z-index:2}
-  .sec-label{font-family:var(--mono);font-size:13px;color:var(--acc);margin-bottom:10px}
-  .sec-label::before{content:"// "}
-  h2{font-family:var(--head);font-size:clamp(28px,4.5vw,42px);font-weight:700;letter-spacing:-.02em;margin-bottom:34px}
+  .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:40px}
+  .about-grid .k{font-family:var(--mono);font-size:12.5px;color:var(--dim);padding-top:6px}
+  .about p{font-size:clamp(17px,2vw,21px);color:var(--mut);margin-bottom:20px;line-height:1.5}
+  .about p:last-child{margin-bottom:0}
+  .about p b{color:var(--ink);font-weight:500}
 
-  .about p{font-size:17.5px;color:var(--muted);max-width:740px;margin-bottom:18px}
-  .about p b{color:var(--txt);font-weight:600}
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .skill{background:var(--bg);padding:26px 24px;transition:background .3s}
+  .skill:hover{background:var(--pane)}
+  .skill h3{font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:16px;text-transform:uppercase;letter-spacing:.08em}
+  .skill ul{list-style:none}
+  .skill li{font-family:var(--disp);font-size:17px;font-weight:500;padding:5px 0;color:var(--ink);transition:color .2s,padding-left .2s;cursor:default}
+  .skill li:hover{color:var(--acc);padding-left:8px}
 
-  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:18px}
-  .skill{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:16px;padding:22px;transition:all .3s}
-  .skill:hover{border-color:rgba(90,162,255,.35);transform:translateY(-4px)}
-  .skill h3{font-family:var(--head);font-size:15px;font-weight:600;margin-bottom:15px;display:flex;align-items:center;gap:9px}
-  .skill h3 i{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-block}
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{font-family:var(--mono);font-size:12px;color:var(--muted);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:7px;padding:5px 10px;transition:all .2s}
-  .skill:hover .chip{border-color:rgba(120,150,190,.25)}
+  .rows{border-top:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:44px 1fr auto;gap:22px;align-items:center;padding:30px 8px;border-bottom:1px solid var(--line);transition:padding .35s,background .35s;position:relative}
+  .row:hover{padding-left:22px;background:var(--pane)}
+  .row .idx{font-family:var(--mono);font-size:12px;color:var(--dim)}
+  .row:hover .idx{color:var(--acc)}
+  .row .rt{font-family:var(--disp);font-size:clamp(24px,3.5vw,40px);font-weight:600;letter-spacing:-.02em;line-height:1.05}
+  .row .rd{font-size:14px;color:var(--mut);margin-top:6px;max-width:640px}
+  .row .rs{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin-top:9px}
+  .row .re{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--mut);white-space:nowrap}
+  .row .re svg{width:16px;height:16px;transition:transform .3s}
+  .row:hover .re{color:var(--acc)}
+  .row:hover .re svg{transform:translate(4px,-4px)}
+  .row.lock:hover{background:var(--pane)}
+  .row.lock .re{color:var(--dim)}
+  .row.lock:hover .re svg{transform:none}
 
-  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-  .proj{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s;transform-style:preserve-3d;position:relative;overflow:hidden}
-  .proj::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(90,162,255,.08),transparent 60%);opacity:0;transition:opacity .3s}
-  .proj:hover::before{opacity:1}
-  .proj:hover{border-color:rgba(90,162,255,.4);box-shadow:0 18px 50px rgba(0,0,0,.4)}
-  .proj .top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;gap:10px}
-  .proj h3{font-family:var(--head);font-size:19px;font-weight:600;letter-spacing:-.01em}
-  .proj .tag{font-family:var(--mono);font-size:11px;color:var(--acc2);border:1px solid var(--line);border-radius:20px;padding:4px 11px;white-space:nowrap;background:rgba(84,224,199,.05)}
-  .proj p{font-size:14.5px;color:var(--muted);margin-bottom:18px;flex:1}
-  .proj .stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-  .proj .stack span{font-family:var(--mono);font-size:11px;color:var(--dim)}
-  .proj .link{font-size:13px;font-weight:500;color:var(--acc);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
-  .proj .link:hover{gap:10px}
-  .proj .link.muted{color:var(--dim)}
-  .proj .link svg{width:13px;height:13px}
+  .ach{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .aw{background:var(--bg);padding:26px 24px;display:flex;gap:18px;transition:background .3s}
+  .aw:hover{background:var(--pane)}
+  .aw .yr{font-family:var(--mono);font-size:12px;color:var(--acc);white-space:nowrap;padding-top:3px}
+  .aw b{font-family:var(--disp);font-weight:600;font-size:17px}
+  .aw span{color:var(--mut);font-size:13.5px;display:block;margin-top:5px;line-height:1.4}
 
-  .ach{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:15px}
-  .aw{display:flex;gap:15px;background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:20px;transition:all .3s}
-  .aw:hover{border-color:rgba(84,224,199,.3);transform:translateX(4px)}
-  .aw .yr{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--acc2);padding-top:2px;white-space:nowrap}
-  .aw .txt b{font-family:var(--head);font-weight:600;font-size:15px}
-  .aw .txt span{color:var(--muted);font-size:13px;display:block;margin-top:3px}
+  .contact{text-align:center;padding:clamp(90px,14vw,170px) 0}
+  .contact .big{font-family:var(--disp);font-size:clamp(44px,10vw,128px);font-weight:700;letter-spacing:-.04em;line-height:.92;margin-bottom:36px}
+  .contact .big a{color:var(--ink);transition:color .3s;display:inline-block}
+  .contact .big a:hover{color:var(--acc)}
+  .contact p{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.4vw,24px);color:var(--mut);margin-bottom:40px}
+  .clinks{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 
-  .contact{text-align:center;padding:110px 0}
-  .contact h2{margin-bottom:14px}
-  .contact p{color:var(--muted);margin-bottom:32px;font-size:18px}
-  .contact .cta{justify-content:center}
-  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;position:relative;z-index:2}
-  footer p{font-family:var(--mono);font-size:12px;color:var(--dim)}
+  footer{border-top:1px solid var(--line);padding:26px 0;position:relative;z-index:2}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer p{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
 
-  .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
   .reveal.in{opacity:1;transform:none}
+
+  #intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.76,0,.24,1)}
+  #intro.gone{transform:translateY(-101%)}
+  #intro .t{font-family:var(--mono);font-size:14px;color:var(--acc);letter-spacing:.1em}
 
   [data-lang-ru]{display:none}
   body.ru [data-lang-en]{display:none}
   body.ru [data-lang-ru]{display:revert}
-  @media(max-width:640px){.nav-links{display:none}.hero{padding:100px 0 60px;min-height:auto}section{padding:70px 0}.stats{gap:26px}}
-  @media(prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.1s!important}.reveal{opacity:1;transform:none}}
+  @media(max-width:860px){.hgrid{grid-template-columns:1fr;gap:36px}.viz{max-width:360px}.about-grid{grid-template-columns:1fr;gap:16px}.nav-links{display:none}.row{grid-template-columns:30px 1fr;gap:14px}.row .re{grid-column:2;margin-top:12px}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}.reveal,.rv>span{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
-<canvas id="net"></canvas>
-<div id="glow"></div>
+<div id="intro"><div class="t mono" id="introt">recara.dev</div></div>
+<div class="grain"></div>
+<div class="cur" id="cur"></div>
+<div class="curd" id="curd"></div>
 
 <nav id="nav">
   <div class="wrap">
-    <a href="#top" class="brand">recara<b>.dev</b></a>
+    <a href="#top" class="brand" data-cur>recara<b>.dev</b></a>
     <div class="nav-right">
       <div class="nav-links">
-        <a href="#about" data-lang-en>About</a><a href="#about" data-lang-ru>О себе</a>
-        <a href="#projects" data-lang-en>Projects</a><a href="#projects" data-lang-ru>Проекты</a>
-        <a href="#awards" data-lang-en>Awards</a><a href="#awards" data-lang-ru>Награды</a>
-        <a href="#contact" data-lang-en>Contact</a><a href="#contact" data-lang-ru>Контакты</a>
+        <a href="#about" data-cur><span class="i">01</span><span data-lang-en>About</span><span data-lang-ru>О себе</span></a>
+        <a href="#work" data-cur><span class="i">02</span><span data-lang-en>Work</span><span data-lang-ru>Проекты</span></a>
+        <a href="#awards" data-cur><span class="i">03</span><span data-lang-en>Awards</span><span data-lang-ru>Награды</span></a>
+        <a href="#contact" data-cur><span class="i">04</span><span data-lang-en>Contact</span><span data-lang-ru>Контакты</span></a>
       </div>
-      <div class="lang">
-        <button id="en" class="on" onclick="setLang('en')">EN</button>
-        <button id="ru" onclick="setLang('ru')">RU</button>
-      </div>
+      <div class="lang"><button id="en" class="on" data-cur onclick="setLang('en')">EN</button><span style="color:var(--dim)">/</span><button id="ru" data-cur onclick="setLang('ru')">RU</button></div>
     </div>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="badge"><span class="dot"></span><span data-lang-en>Available for work · DA | Studio</span><span data-lang-ru>Открыт к работе · DA | Studio</span></div>
-    <h1><span class="grad">Danil Gneushev</span></h1>
-    <div class="type-wrap"><span data-lang-en>I build&nbsp;</span><span data-lang-ru>Я делаю&nbsp;</span><span class="type" id="type"></span><span class="cursor"></span></div>
-    <p class="lede" data-lang-en>From research notebook to a running API: ML pipelines, FastAPI backends with local LLMs and RAG, 1C integrations, and Kaggle-grade modeling. Studying Software Engineering at FEFU.</p>
-    <p class="lede" data-lang-ru>От исследовательского ноутбука до рабочего API: ML-пайплайны, бэкенды на FastAPI с локальными LLM и RAG, интеграции с 1С и Kaggle-моделирование. Учусь на «Программной инженерии» в ДВФУ.</p>
-    <div class="cta">
-      <a href="https://github.com/recara" class="btn pri" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 015 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.35 4.81-4.58 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.02 10.02 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
-        GitHub
-      </a>
-      <a href="https://t.me/byUnleash" class="btn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3.3 15.6c-.24 1.1-.9 1.37-1.83.85l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1.02.5l.36-5.13L18.3 6.2c.4-.36-.09-.56-.62-.2L6.68 13.1l-4.9-1.53c-1.06-.33-1.08-1.06.22-1.57l19.1-7.37c.9-.33 1.68.2 1.4 1.7z"/></svg>
-        Telegram
-      </a>
-      <a href="resume.pdf" class="btn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>
-        <span data-lang-en>Resume</span><span data-lang-ru>Резюме</span>
-      </a>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="n" data-count="10">0</div><div class="l"><span data-lang-en>projects shipped</span><span data-lang-ru>проектов</span></div></div>
-      <div class="stat"><div class="n" data-count="8">0</div><div class="l"><span data-lang-en>awards &amp; finals</span><span data-lang-ru>наград и финалов</span></div></div>
-      <div class="stat"><div class="n" data-count="7">0</div><div class="l"><span data-lang-en>public repos</span><span data-lang-ru>публичных репо</span></div></div>
+    <div class="hgrid">
+      <div>
+        <div class="htop"><span data-lang-en>Portfolio — Vladivostok</span><span data-lang-ru>Портфолио — Владивосток</span><span class="r">2026 © ML / Python</span></div>
+        <h1><span class="scr" data-text="Danil">Danil</span><br><span class="l2 scr" data-text="Gneushev">Gneushev</span></h1>
+        <div class="role"><span data-lang-en>I build</span><span data-lang-ru>Я делаю</span><span class="rot" id="rot"></span></div>
+        <p class="tag" data-lang-en>ML engineer & Python developer turning data and messy production systems into <em>working intelligence</em> — from research notebook to a running API.</p>
+        <p class="tag" data-lang-ru>ML-инженер и Python-разработчик, превращающий данные и хаотичный прод в <em>работающий интеллект</em> — от исследовательского ноутбука до рабочего API.</p>
+        <div class="cta">
+          <a href="https://github.com/recara" class="btn pri mag" data-cur target="_blank" rel="noopener">GitHub<span class="a">↗</span></a>
+          <a href="https://t.me/byUnleash" class="btn mag" data-cur target="_blank" rel="noopener">Telegram<span class="a">↗</span></a>
+          <a href="resume.pdf" class="btn mag" data-cur target="_blank" rel="noopener"><span data-lang-en>Resume</span><span data-lang-ru>Резюме</span><span class="a">↓</span></a>
+        </div>
+      </div>
+      <div class="viz" data-cur>
+        <canvas id="latent"></canvas>
+        <div class="cr mono">latent&nbsp;space</div>
+        <div class="cap mono"><b>●</b> 4 clusters · live embedding</div>
+      </div>
     </div>
   </div>
 </header>
 
-<div class="marquee"><div class="track" id="mq"></div></div>
+<div class="strip"><div class="tk" id="tk"></div></div>
 
-<section id="about" class="about">
+<section id="about">
   <div class="wrap">
-    <div class="sec-label reveal">about</div>
-    <h2 class="reveal" data-lang-en>Who I am</h2>
-    <h2 class="reveal" data-lang-ru>Кто я</h2>
-    <p class="reveal" data-lang-en>ML engineer and Python developer with a broad practical base — from classical machine learning and Kaggle competitions to production backends on FastAPI and full-stack TypeScript apps. Over the past year I shipped <b>10+ projects</b>: ML pipelines, CV models, AI bots with RAG on local LLMs, and real client web platforms.</p>
-    <p class="reveal" data-lang-ru>ML-инженер и Python-разработчик с широкой практической базой — от классического ML и Kaggle-соревнований до production-бэкендов на FastAPI и full-stack приложений на TypeScript. За последний год реализовал <b>10+ проектов</b>: ML-пайплайны, CV-модели, AI-боты с RAG на локальных LLM и реальные клиентские веб-платформы.</p>
-    <p class="reveal" data-lang-en>Since September 2025 I work at <b>DA | Studio</b>, running technical support and development of commercial web projects: production incident diagnostics, 1C integrations, SEO and performance. I care about reproducible, interpretable and maintainable code.</p>
-    <p class="reveal" data-lang-ru>С сентября 2025 работаю в <b>DA | Studio</b> — веду техническое сопровождение и развитие коммерческих веб-проектов: диагностику production-инцидентов, интеграции с 1С, SEO и производительность. Ценю воспроизводимый, интерпретируемый и поддерживаемый код.</p>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <div class="sec-label reveal">stack</div>
-    <h2 class="reveal" data-lang-en>Skills &amp; tools</h2>
-    <h2 class="reveal" data-lang-ru>Навыки и инструменты</h2>
-    <div class="skills">
-      <div class="skill reveal"><h3><i></i>Machine Learning</h3><div class="chips"><span class="chip">scikit-learn</span><span class="chip">XGBoost</span><span class="chip">CatBoost</span><span class="chip">LightGBM</span><span class="chip">SHAP</span><span class="chip">Optuna</span></div></div>
-      <div class="skill reveal"><h3><i></i><span data-lang-en>Data</span><span data-lang-ru>Данные</span></h3><div class="chips"><span class="chip">pandas</span><span class="chip">numpy</span><span class="chip">matplotlib</span><span class="chip">seaborn</span><span class="chip">Parquet</span><span class="chip">SQL</span></div></div>
-      <div class="skill reveal"><h3><i></i>Backend</h3><div class="chips"><span class="chip">Python 3.12</span><span class="chip">FastAPI</span><span class="chip">aiogram 3</span><span class="chip">PostgreSQL</span><span class="chip">pgvector</span><span class="chip">Ollama</span><span class="chip">RAG</span></div></div>
-      <div class="skill reveal"><h3><i></i>Web</h3><div class="chips"><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">Flask</span><span class="chip">YandexGPT</span></div></div>
-      <div class="skill reveal"><h3><i></i><span data-lang-en>Infra</span><span data-lang-ru>Инфраструктура</span></h3><div class="chips"><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">nginx</span><span class="chip">1C</span></div></div>
+    <div class="shead"><span class="snum">01</span><h2 class="rv"><span data-lang-en>About</span><span data-lang-ru>О себе</span></h2></div>
+    <div class="about-grid about">
+      <div class="k reveal" data-lang-en>[ profile / focus ]</div>
+      <div class="k reveal" data-lang-ru>[ профиль / фокус ]</div>
+      <div>
+        <p class="reveal" data-lang-en>ML engineer and Python developer with a broad practical base — from classical machine learning and Kaggle competitions to production backends on FastAPI and full-stack TypeScript apps. Over the past year I shipped <b>10+ projects</b>: ML pipelines, CV models, AI bots with RAG on local LLMs, and real client web platforms.</p>
+        <p class="reveal" data-lang-ru>ML-инженер и Python-разработчик с широкой практической базой — от классического ML и Kaggle-соревнований до production-бэкендов на FastAPI и full-stack приложений на TypeScript. За последний год реализовал <b>10+ проектов</b>: ML-пайплайны, CV-модели, AI-боты с RAG на локальных LLM и реальные клиентские веб-платформы.</p>
+        <p class="reveal" data-lang-en>Since September 2025 I work at <b>DA | Studio</b> — production incident diagnostics, 1C integrations, SEO and performance. Studying Software Engineering at FEFU. I care about reproducible, interpretable and maintainable code.</p>
+        <p class="reveal" data-lang-ru>С сентября 2025 работаю в <b>DA | Studio</b> — диагностика production-инцидентов, интеграции с 1С, SEO и производительность. Учусь на «Программной инженерии» в ДВФУ. Ценю воспроизводимый, интерпретируемый и поддерживаемый код.</p>
+      </div>
+    </div>
+    <div style="margin-top:64px" class="skills reveal">
+      <div class="skill"><h3>ML</h3><ul><li>scikit-learn</li><li>XGBoost</li><li>CatBoost</li><li>LightGBM</li><li>SHAP · Optuna</li></ul></div>
+      <div class="skill"><h3 data-lang-en>Data</h3><h3 data-lang-ru>Данные</h3><ul><li>pandas · numpy</li><li>matplotlib</li><li>seaborn</li><li>Parquet</li><li>SQL</li></ul></div>
+      <div class="skill"><h3>Backend</h3><ul><li>FastAPI</li><li>aiogram 3</li><li>PostgreSQL</li><li>pgvector</li><li>Ollama · RAG</li></ul></div>
+      <div class="skill"><h3>Web</h3><ul><li>TypeScript</li><li>React · Vite</li><li>Flask</li><li>YandexGPT</li></ul></div>
+      <div class="skill"><h3 data-lang-en>Infra</h3><h3 data-lang-ru>Инфра</h3><ul><li>Git</li><li>Docker</li><li>Linux · nginx</li><li>1C</li></ul></div>
     </div>
   </div>
 </section>
 
-<section id="projects">
+<section id="work">
   <div class="wrap">
-    <div class="sec-label reveal">work</div>
-    <h2 class="reveal" data-lang-en>Selected projects</h2>
-    <h2 class="reveal" data-lang-ru>Избранные проекты</h2>
-    <div class="projects">
-      <div class="proj reveal tilt">
-        <div class="top"><h3>AI bot</h3><div class="tag">FastAPI · RAG</div></div>
-        <p data-lang-en>Backend for a utility-service assistant on FastAPI + aiogram 3 with local LLM inference (Ollama) and RAG. Deterministic FSM flows kept separate from AI intent classification — the LLM never touches billing or decisions.</p>
-        <p data-lang-ru>Бэкенд ассистента для ЖКХ-сервиса на FastAPI + aiogram 3 с локальным LLM (Ollama) и RAG. Детерминированные FSM-сценарии отделены от AI-классификации — LLM не участвует в расчётах и решениях.</p>
-        <div class="stack"><span>Python 3.12 · FastAPI · aiogram · PostgreSQL · pgvector · Ollama</span></div>
-        <span class="link muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span data-lang-en>Private repo</span><span data-lang-ru>Приватный репозиторий</span></span>
+    <div class="shead"><span class="snum">02</span><h2 class="rv"><span data-lang-en>Selected work</span><span data-lang-ru>Избранные проекты</span></h2></div>
+    <div class="rows">
+      <div class="row lock reveal" data-cur>
+        <span class="idx">01</span>
+        <div><div class="rt">AI bot</div><div class="rd" data-lang-en>FastAPI + aiogram 3 assistant with local LLM (Ollama) and RAG. Deterministic FSM flows kept apart from AI intent classification — the LLM never touches billing or decisions.</div><div class="rd" data-lang-ru>Ассистент на FastAPI + aiogram 3 с локальным LLM (Ollama) и RAG. Детерминированные FSM-сценарии отделены от AI-классификации — LLM не участвует в расчётах и решениях.</div><div class="rs">Python · FastAPI · aiogram · PostgreSQL · pgvector · Ollama</div></div>
+        <span class="re"><span data-lang-en>Private</span><span data-lang-ru>Приватный</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
       </div>
-      <div class="proj reveal tilt">
-        <div class="top"><h3>Trader MVP</h3><div class="tag">TypeScript</div></div>
-        <p data-lang-en>Production-ready fintech MVP: JWT + Argon2id auth with refresh tokens, 3 business scenarios, notifications, RU/ZH localization (150+ keys), 100% type-safe TypeScript, Docker deploy.</p>
-        <p data-lang-ru>Production-ready fintech MVP: авторизация JWT + Argon2id с refresh-токенами, 3 бизнес-сценария, уведомления, локализация RU/ZH (150+ ключей), 100% типобезопасный TypeScript, деплой в Docker.</p>
-        <div class="stack"><span>Express · TypeScript · Prisma · React 18 · Vite · Docker</span></div>
-        <span class="link muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span data-lang-en>Private repo</span><span data-lang-ru>Приватный репозиторий</span></span>
+      <div class="row lock reveal" data-cur>
+        <span class="idx">02</span>
+        <div><div class="rt">Trader MVP</div><div class="rd" data-lang-en>Production-ready fintech MVP: JWT + Argon2id auth, 3 business scenarios, notifications, RU/ZH localization (150+ keys), 100% type-safe TypeScript, Docker deploy.</div><div class="rd" data-lang-ru>Production-ready fintech MVP: JWT + Argon2id, 3 бизнес-сценария, уведомления, локализация RU/ZH (150+ ключей), 100% типобезопасный TypeScript, деплой в Docker.</div><div class="rs">Express · TypeScript · Prisma · React 18 · Vite · Docker</div></div>
+        <span class="re"><span data-lang-en>Private</span><span data-lang-ru>Приватный</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
       </div>
-      <div class="proj reveal tilt">
-        <div class="top"><h3>YOLOv8 segmentation</h3><div class="tag">CV</div></div>
-        <p data-lang-en>Instance segmentation on a custom dataset with YOLOv8, plus a COCO→YOLOv8 annotation converter and training pipeline.</p>
-        <p data-lang-ru>Instance segmentation на кастомном датасете (YOLOv8) с конвертером разметки COCO→YOLOv8 и пайплайном обучения.</p>
-        <div class="stack"><span>Python · YOLOv8 · Ultralytics · COCO</span></div>
-        <a class="link" href="https://github.com/recara/ods-ai-yolov8-segmentation" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>github.com/recara</a>
-      </div>
-      <div class="proj reveal tilt">
-        <div class="top"><h3>Data Fusion 2026</h3><div class="tag">ML</div></div>
-        <p data-lang-en>Solution for the "Страж" task of Data Fusion Contest 2026 — ML modeling on tabular data with exploration and submission pipeline.</p>
-        <p data-lang-ru>Решение задачи «Страж» Data Fusion Contest 2026 — ML на табличных данных с исследованием и пайплайном сабмита.</p>
-        <div class="stack"><span>Python · pandas · scikit-learn</span></div>
-        <a class="link" href="https://github.com/recara/data-fusion-contest-2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>github.com/recara</a>
-      </div>
-      <div class="proj reveal tilt">
-        <div class="top"><h3>E-CUP 2025</h3><div class="tag">RecSys</div></div>
-        <p data-lang-en>Recommender-system challenge on Ozon data — training and fine-tuning recsys models, baseline and stacking experiments.</p>
-        <p data-lang-ru>Соревнование по рекомендательным системам на данных Ozon — обучение и файнтюнинг recsys-моделей, baseline и stacking.</p>
-        <div class="stack"><span>Python · pandas · ML</span></div>
-        <a class="link" href="https://github.com/recara/e-cup-2025-ml-challenge" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>github.com/recara</a>
-      </div>
-      <div class="proj reveal tilt">
-        <div class="top"><h3><span data-lang-en>SEO clustering</span><span data-lang-ru>SEO-кластеризация</span></h3><div class="tag">NLP</div></div>
-        <p data-lang-en>Offline clustering of competitor search queries with local multilingual embeddings, HDBSCAN, representative-key selection and embedding cache.</p>
-        <p data-lang-ru>Офлайн-кластеризация поисковых запросов конкурентов: локальные мультиязычные эмбеддинги, HDBSCAN, выбор ключа кластера, кэш эмбеддингов.</p>
-        <div class="stack"><span>Python · sentence-transformers · HDBSCAN</span></div>
-        <span class="link muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span data-lang-en>Private repo</span><span data-lang-ru>Приватный репозиторий</span></span>
+      <a class="row reveal" data-cur href="https://github.com/recara/ods-ai-yolov8-segmentation" target="_blank" rel="noopener">
+        <span class="idx">03</span>
+        <div><div class="rt">YOLOv8 segmentation</div><div class="rd" data-lang-en>Instance segmentation on a custom dataset with YOLOv8, plus a COCO→YOLOv8 annotation converter and training pipeline.</div><div class="rd" data-lang-ru>Instance segmentation на кастомном датасете (YOLOv8) с конвертером COCO→YOLOv8 и пайплайном обучения.</div><div class="rs">Python · YOLOv8 · Ultralytics · COCO</div></div>
+        <span class="re">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+      </a>
+      <a class="row reveal" data-cur href="https://github.com/recara/data-fusion-contest-2026" target="_blank" rel="noopener">
+        <span class="idx">04</span>
+        <div><div class="rt">Data Fusion 2026</div><div class="rd" data-lang-en>Solution for the "Страж" task — ML modeling on tabular data with exploration and submission pipeline.</div><div class="rd" data-lang-ru>Решение задачи «Страж» — ML на табличных данных с исследованием и пайплайном сабмита.</div><div class="rs">Python · pandas · scikit-learn</div></div>
+        <span class="re">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+      </a>
+      <a class="row reveal" data-cur href="https://github.com/recara/e-cup-2025-ml-challenge" target="_blank" rel="noopener">
+        <span class="idx">05</span>
+        <div><div class="rt">E-CUP 2025</div><div class="rd" data-lang-en>Recommender-system challenge on Ozon data — training and fine-tuning recsys models, baseline and stacking experiments.</div><div class="rd" data-lang-ru>Соревнование по рекомендательным системам на данных Ozon — обучение и файнтюнинг recsys-моделей, baseline и stacking.</div><div class="rs">Python · pandas · ML</div></div>
+        <span class="re">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+      </a>
+      <div class="row lock reveal" data-cur>
+        <span class="idx">06</span>
+        <div><div class="rt" data-lang-en>SEO clustering</div><div class="rt" data-lang-ru>SEO-кластеризация</div><div class="rd" data-lang-en>Offline clustering of competitor search queries with local multilingual embeddings, HDBSCAN, representative-key selection and embedding cache.</div><div class="rd" data-lang-ru>Офлайн-кластеризация запросов конкурентов: локальные мультиязычные эмбеддинги, HDBSCAN, выбор ключа кластера, кэш эмбеддингов.</div><div class="rs">Python · sentence-transformers · HDBSCAN</div></div>
+        <span class="re"><span data-lang-en>Private</span><span data-lang-ru>Приватный</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
       </div>
     </div>
   </div>
@@ -272,143 +255,126 @@
 
 <section id="awards">
   <div class="wrap">
-    <div class="sec-label reveal">achievements</div>
-    <h2 class="reveal" data-lang-en>Awards &amp; competitions</h2>
-    <h2 class="reveal" data-lang-ru>Награды и соревнования</h2>
-    <div class="ach">
-      <div class="aw reveal"><div class="yr">WIN</div><div class="txt"><div data-lang-en><b>National Treasure of Russia</b><span>Winner, regional &amp; final stages · Informatics &amp; ICT</span></div><div data-lang-ru><b>Национальное Достояние России</b><span>Победитель регионального и заключительного этапов · Информатика и ИКТ</span></div></div></div>
-      <div class="aw reveal"><div class="yr">#4</div><div class="txt"><div data-lang-en><b>Sirius.AI · BioCAD</b><span>4th place — "AI: Artificial Intelligence" program</span></div><div data-lang-ru><b>Sirius.AI · BioCAD</b><span>4 место — программа «Сириус. ИИ: Искусственный интеллект»</span></div></div></div>
-      <div class="aw reveal"><div class="yr">FIN</div><div class="txt"><div data-lang-en><b>MTS True Tech</b><span>Finalist · Algorithms track</span></div><div data-lang-ru><b>MTS True Tech</b><span>Финалист · трек «Алгоритмы»</span></div></div></div>
-      <div class="aw reveal"><div class="yr">1/2</div><div class="txt"><div data-lang-en><b>Deadline · T1 Genii</b><span>Semifinalist</span></div><div data-lang-ru><b>Deadline · T1 Genii</b><span>Полуфиналист</span></div></div></div>
-      <div class="aw reveal"><div class="yr">ML</div><div class="txt"><div data-lang-en><b>Avito ML Cup 2025</b><span>"Duplicate search" hackathon participant</span></div><div data-lang-ru><b>Avito ML Cup 2025</b><span>Участник хакатона «Поиск дублей»</span></div></div></div>
-      <div class="aw reveal"><div class="yr">IT</div><div class="txt"><div data-lang-en><b>IT Buryatia Future</b><span>4th place (2024) · Finalist AI track (2025)</span></div><div data-lang-ru><b>Мы — будущее IT Бурятии</b><span>4 место (2024) · финалист трека ИИ (2025)</span></div></div></div>
+    <div class="shead"><span class="snum">03</span><h2 class="rv"><span data-lang-en>Awards</span><span data-lang-ru>Награды</span></h2></div>
+    <div class="ach reveal">
+      <div class="aw"><span class="yr">WIN</span><div><div data-lang-en><b>National Treasure of Russia</b><span>Winner, regional & final stages · Informatics & ICT</span></div><div data-lang-ru><b>Национальное Достояние России</b><span>Победитель регионального и заключительного этапов · Информатика и ИКТ</span></div></div></div>
+      <div class="aw"><span class="yr">#4</span><div><div data-lang-en><b>Sirius.AI · BioCAD</b><span>4th place — "AI: Artificial Intelligence" program</span></div><div data-lang-ru><b>Sirius.AI · BioCAD</b><span>4 место — программа «Сириус. ИИ»</span></div></div></div>
+      <div class="aw"><span class="yr">FIN</span><div><div data-lang-en><b>MTS True Tech</b><span>Finalist · Algorithms track</span></div><div data-lang-ru><b>MTS True Tech</b><span>Финалист · трек «Алгоритмы»</span></div></div></div>
+      <div class="aw"><span class="yr">1/2</span><div><div data-lang-en><b>Deadline · T1 Genii</b><span>Semifinalist</span></div><div data-lang-ru><b>Deadline · T1 Гении</b><span>Полуфиналист</span></div></div></div>
+      <div class="aw"><span class="yr">ML</span><div><div data-lang-en><b>Avito ML Cup 2025</b><span>"Duplicate search" hackathon</span></div><div data-lang-ru><b>Avito ML Cup 2025</b><span>Хакатон «Поиск дублей»</span></div></div></div>
+      <div class="aw"><span class="yr">IT</span><div><div data-lang-en><b>IT Buryatia Future</b><span>4th (2024) · AI-track finalist (2025)</span></div><div data-lang-ru><b>Мы — будущее IT Бурятии</b><span>4 место (2024) · финалист трека ИИ (2025)</span></div></div></div>
     </div>
   </div>
 </section>
 
 <section id="contact" class="contact">
   <div class="wrap">
-    <h2 class="reveal" data-lang-en>Let's talk</h2>
-    <h2 class="reveal" data-lang-ru>Давайте на связи</h2>
-    <p class="reveal" data-lang-en>Open to ML engineer / Python developer roles and interesting projects.</p>
-    <p class="reveal" data-lang-ru>Открыт к позициям ML-инженера / Python-разработчика и интересным проектам.</p>
-    <div class="cta reveal">
-      <a href="https://t.me/byUnleash" class="btn pri" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3.3 15.6c-.24 1.1-.9 1.37-1.83.85l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1.02.5l.36-5.13L18.3 6.2c.4-.36-.09-.56-.62-.2L6.68 13.1l-4.9-1.53c-1.06-.33-1.08-1.06.22-1.57l19.1-7.37c.9-.33 1.68.2 1.4 1.7z"/></svg>
-        Telegram @byUnleash
-      </a>
-      <a href="https://github.com/recara" class="btn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 015 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.35 4.81-4.58 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.02 10.02 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
-        github.com/recara
-      </a>
+    <div class="snum" style="margin-bottom:20px">04</div>
+    <div class="big"><span data-lang-en>Let's build</span><span data-lang-ru>Давайте</span><br><a href="https://t.me/byUnleash" class="mag" data-cur target="_blank" rel="noopener"><span data-lang-en>something.</span><span data-lang-ru>сделаем.</span></a></div>
+    <p data-lang-en>Open to ML engineer / Python developer roles and interesting projects.</p>
+    <p data-lang-ru>Открыт к позициям ML-инженера / Python-разработчика и интересным проектам.</p>
+    <div class="clinks">
+      <a href="https://t.me/byUnleash" class="btn pri mag" data-cur target="_blank" rel="noopener">Telegram @byUnleash<span class="a">↗</span></a>
+      <a href="https://github.com/recara" class="btn mag" data-cur target="_blank" rel="noopener">github.com/recara<span class="a">↗</span></a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap"><p>© 2026 Danil Gneushev · built &amp; hosted on GitHub Pages</p></div>
+  <div class="wrap"><p>© 2026 Danil Gneushev</p><p>built & hosted on GitHub Pages</p><p>Vladivostok · UTC+10</p></div>
 </footer>
 
 <script>
+  var CH='ABCDEFGHJKLMNPQRSTUVWXYZ#%&/<>*01';
+  function scramble(el){
+    var text=el.dataset.text||el.textContent, n=text.length, start=performance.now(), dur=700+n*45;
+    function tick(now){
+      var p=Math.min(1,(now-start)/dur), reveal=Math.floor(p*n), out='';
+      for(var i=0;i<n;i++){ out+= (i<reveal||text[i]===' ')?text[i]:CH[Math.floor(Math.random()*CH.length)]; }
+      el.textContent=out;
+      if(p<1) requestAnimationFrame(tick); else el.textContent=text;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  var rotWords={en:['ML pipelines','FastAPI backends','AI bots · RAG','data products'],ru:['ML-пайплайны','бэкенды · FastAPI','AI-ботов · RAG','data-продукты']};
+  var rI=0,rT;
+  function rotLoop(){
+    var lang=document.body.classList.contains('ru')?'ru':'en', w=rotWords[lang][rI%rotWords[lang].length], el=document.getElementById('rot');
+    if(!el)return;
+    var n=w.length,s=performance.now(),dur=520;
+    function tk(now){var p=Math.min(1,(now-s)/dur),rv=Math.floor(p*n),o='';for(var i=0;i<n;i++)o+=(i<rv||w[i]===' ')?w[i]:CH[Math.floor(Math.random()*CH.length)];el.textContent=o;if(p<1)requestAnimationFrame(tk);else el.textContent=w;}
+    requestAnimationFrame(tk);
+    rI++; clearTimeout(rT); rT=setTimeout(rotLoop,2400);
+  }
+
   function setLang(l){
     document.body.classList.toggle('ru', l==='ru');
-    document.documentElement.lang = l;
+    document.documentElement.lang=l;
     document.getElementById('en').classList.toggle('on', l==='en');
     document.getElementById('ru').classList.toggle('on', l==='ru');
-    try{ localStorage.setItem('lang', l); }catch(e){}
-    startType();
+    try{localStorage.setItem('lang',l);}catch(e){}
+    clearTimeout(rT); rI=0; rotLoop();
   }
 
-  var typeWords = {en:['ML pipelines','FastAPI backends','AI bots with RAG','data products'], ru:['ML-пайплайны','бэкенды на FastAPI','AI-ботов с RAG','data-продукты']};
-  var tTimer, tI=0, tC=0, tDel=false;
-  function startType(){
-    clearTimeout(tTimer); tI=0; tC=0; tDel=false;
-    var el=document.getElementById('type'); if(el) el.textContent='';
-    typeLoop();
-  }
-  function typeLoop(){
-    var lang=document.body.classList.contains('ru')?'ru':'en';
-    var words=typeWords[lang], w=words[tI%words.length], el=document.getElementById('type');
-    if(!el) return;
-    if(tDel){ tC--; } else { tC++; }
-    el.textContent=w.slice(0,tC);
-    var d=tDel?45:90;
-    if(!tDel && tC===w.length){ d=1400; tDel=true; }
-    else if(tDel && tC===0){ tDel=false; tI++; d=250; }
-    tTimer=setTimeout(typeLoop,d);
-  }
-
-  var mqData=['Python','FastAPI','scikit-learn','XGBoost','CatBoost','LightGBM','pandas','PyTorch','SHAP','Optuna','PostgreSQL','pgvector','Docker','TypeScript','React','Ollama','RAG'];
   (function(){
-    var html=mqData.map(function(x){return '<span><b>◆</b> '+x+'</span>'}).join('');
-    document.getElementById('mq').innerHTML=html+html;
+    var tk=['Python','FastAPI','PyTorch','scikit-learn','XGBoost','CatBoost','LightGBM','pandas','SHAP','Optuna','PostgreSQL','Docker','TypeScript','React','Ollama','RAG'];
+    var h=tk.map(function(x,i){return '<span'+(i%3===0?' class="f"':'')+'>'+x+'</span><span style="color:var(--acc);-webkit-text-stroke:0">/</span>'}).join('');
+    document.getElementById('tk').innerHTML=h+h;
   })();
 
-  window.addEventListener('scroll',function(){
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY>30);
-  });
+  window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('on',scrollY>40);});
 
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(function(el,i){
-    el.style.transitionDelay=(i%6*70)+'ms';
-    io.observe(el);
-  });
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+  document.querySelectorAll('.reveal,.rv').forEach(function(el,i){el.style.transitionDelay=(i%5*60)+'ms';io.observe(el);});
 
-  function countUp(el){
-    var target=+el.dataset.count, cur=0, step=Math.max(1,Math.round(target/28));
-    var t=setInterval(function(){ cur+=step; if(cur>=target){cur=target;clearInterval(t);} el.textContent=cur+(target>=10?'+':''); },40);
+  var touch=matchMedia('(hover:none)').matches;
+  if(touch) document.body.classList.add('touch');
+  else{
+    var cur=document.getElementById('cur'),curd=document.getElementById('curd'),cx=0,cy=0,dx=0,dy=0;
+    addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;curd.style.transform='translate('+cx+'px,'+cy+'px)';});
+    (function loop(){dx+=(cx-dx)*.16;dy+=(cy-dy)*.16;cur.style.transform='translate('+dx+'px,'+dy+'px)';requestAnimationFrame(loop);})();
+    document.querySelectorAll('[data-cur]').forEach(function(el){el.addEventListener('mouseenter',function(){cur.classList.add('big');});el.addEventListener('mouseleave',function(){cur.classList.remove('big');});});
+    document.querySelectorAll('.mag').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+(e.clientX-r.left-r.width/2)*.28+'px,'+(e.clientY-r.top-r.height/2)*.4+'px)';});b.addEventListener('mouseleave',function(){b.style.transform='';});});
   }
-  var sio=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); sio.unobserve(e.target);} });
-  },{threshold:.5});
-  document.querySelectorAll('[data-count]').forEach(function(el){ sio.observe(el); });
-
-  var glow=document.getElementById('glow');
-  window.addEventListener('mousemove',function(e){
-    glow.style.left=e.clientX+'px'; glow.style.top=e.clientY+'px'; glow.style.opacity='1';
-  });
-  document.querySelectorAll('.tilt').forEach(function(c){
-    c.addEventListener('mousemove',function(e){
-      var r=c.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top;
-      c.style.setProperty('--mx',x+'px'); c.style.setProperty('--my',y+'px');
-      var rx=((y/r.height)-.5)*-6, ry=((x/r.width)-.5)*6;
-      c.style.transform='perspective(800px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateY(-4px)';
-    });
-    c.addEventListener('mouseleave',function(){ c.style.transform=''; });
-  });
 
   (function(){
-    var cv=document.getElementById('net'), ctx=cv.getContext('2d'), W,H,pts,DPR=Math.min(2,window.devicePixelRatio||1);
-    var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-    function resize(){ W=cv.width=innerWidth*DPR; H=cv.height=innerHeight*DPR; cv.style.width=innerWidth+'px'; cv.style.height=innerHeight+'px'; init(); }
-    function init(){
-      var n=Math.min(80,Math.floor(innerWidth*innerHeight/16000)); pts=[];
-      for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25*DPR,vy:(Math.random()-.5)*.25*DPR});
+    var cv=document.getElementById('latent'); if(!cv)return;
+    var ctx=cv.getContext('2d'),W,H,DPR=Math.min(2,devicePixelRatio||1),pts=[],t=0;
+    var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+    function size(){var r=cv.getBoundingClientRect();W=cv.width=r.width*DPR;H=cv.height=r.height*DPR;build();}
+    function build(){
+      pts=[]; var cl=[[.3,.32],[.7,.3],[.32,.72],[.72,.7]];
+      cl.forEach(function(c,ci){for(var i=0;i<26;i++){var a=Math.random()*6.28,rr=Math.random()*.14;pts.push({bx:c[0]+Math.cos(a)*rr,by:c[1]+Math.sin(a)*rr,ph:Math.random()*6.28,cl:ci});}});
     }
+    var pal=['#c9f24e','#f2f0ea','#8b897f','#c9f24e'];
     function draw(){
-      ctx.clearRect(0,0,W,H);
-      var maxD=130*DPR;
-      for(var i=0;i<pts.length;i++){
-        var p=pts[i]; p.x+=p.vx; p.y+=p.vy;
-        if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1;
-        for(var j=i+1;j<pts.length;j++){
-          var q=pts[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.sqrt(dx*dx+dy*dy);
-          if(d<maxD){ var a=(1-d/maxD)*.5; ctx.strokeStyle='rgba(90,162,255,'+a+')'; ctx.lineWidth=DPR*.6; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke(); }
-        }
-        ctx.fillStyle='rgba(120,190,230,.55)'; ctx.beginPath(); ctx.arc(p.x,p.y,1.4*DPR,0,7); ctx.fill();
+      t+=.006; ctx.clearRect(0,0,W,H);
+      for(var i=0;i<pts.length;i++){var p=pts[i];
+        var x=(p.bx+Math.sin(t+p.ph)*.012)*W, y=(p.by+Math.cos(t*1.1+p.ph)*.012)*H;
+        p.x=x;p.y=y;
       }
+      ctx.lineWidth=DPR*.5;
+      for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j];if(a.cl!==b.cl)continue;var d=Math.hypot(a.x-b.x,a.y-b.y);if(d<52*DPR){ctx.strokeStyle='rgba(139,137,127,'+(1-d/(52*DPR))*.28+')';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+      for(var i=0;i<pts.length;i++){var p=pts[i];ctx.fillStyle=p.cl===0?pal[0]:(p.cl===2?'rgba(242,240,234,.85)':'rgba(139,137,127,.7)');ctx.beginPath();ctx.arc(p.x,p.y,(p.cl===0?2.2:1.7)*DPR,0,7);ctx.fill();}
       requestAnimationFrame(draw);
     }
-    if(!reduce){ resize(); draw(); window.addEventListener('resize',resize); }
+    size(); addEventListener('resize',size); if(!reduce)draw(); else{t=1;draw();}
   })();
 
-  (function(){
-    var saved=null; try{ saved=localStorage.getItem('lang'); }catch(e){}
-    if(saved!=='en'&&saved!=='ru') saved=(navigator.language||'').slice(0,2)==='ru'?'ru':'en';
+  (function initLang(){
+    var saved=null;try{saved=localStorage.getItem('lang');}catch(e){}
+    if(saved!=='en'&&saved!=='ru')saved=(navigator.language||'').slice(0,2)==='ru'?'ru':'en';
     setLang(saved);
   })();
+  var introDone=false;
+  function finishIntro(){
+    if(introDone)return; introDone=true;
+    var i=document.getElementById('intro'); if(i)i.classList.add('gone');
+    document.querySelectorAll('h1 .scr').forEach(function(el,k){setTimeout(function(){scramble(el);},k*140);});
+  }
+  window.addEventListener('load',function(){setTimeout(finishIntro,550);});
+  setTimeout(finishIntro,1900);
 </script>
 </body>
 </html>
