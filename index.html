@@ -13,11 +13,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://recara.github.io/">
 <meta property="og:title" content="Danil Gneushev — ML Engineer">
-<meta property="og:description" content="ML engineer & Python developer: ML pipelines, FastAPI backends, AI bots with RAG. Projects, awards and contacts.">
+<meta property="og:description" content="ML engineer & Python developer: AI integration for business, RAG assistants, ML pipelines, FastAPI backends. Projects, awards and contacts.">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Danil Gneushev","jobTitle":"ML Engineer","url":"https://recara.github.io/","address":{"@type":"PostalAddress","addressLocality":"Vladivostok","addressCountry":"RU"},"sameAs":["https://github.com/recara","https://t.me/byUnleash"],"knowsAbout":["Machine Learning","Python","FastAPI","Data Science","RAG"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Danil Gneushev","jobTitle":"ML Engineer","url":"https://recara.github.io/","address":{"@type":"PostalAddress","addressLocality":"Vladivostok","addressCountry":"RU"},"sameAs":["https://github.com/recara","https://t.me/byUnleash"],"knowsAbout":["AI integration","Machine Learning","Python","FastAPI","Data Science","RAG"]}</script>
 <script>
   /* runs before paint: enable JS-only styles and pick the language to avoid a flash of the wrong one */
   (function(d){d.className+=' js';var l=null;try{l=localStorage.getItem('lang');}catch(e){}
@@ -134,6 +134,27 @@
   .skill li{font-family:var(--disp);font-size:17px;font-weight:500;padding:5px 0;color:var(--ink);transition:color .2s,padding-left .2s;cursor:default}
   .skill li:hover{color:var(--acc);padding-left:8px}
 
+  .ai-lead{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.6vw,28px);color:var(--mut);max-width:760px;line-height:1.35;margin-bottom:48px}
+  .ai-lead em{color:var(--ink)}
+  .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .sv{background:var(--bg);padding:28px 24px 26px;transition:background .3s;display:flex;flex-direction:column}
+  .sv:hover{background:var(--pane)}
+  .sv .n{font-family:var(--mono);font-size:12px;color:var(--acc);margin-bottom:18px}
+  .sv h3{font-family:var(--disp);font-size:22px;font-weight:600;letter-spacing:-.015em;line-height:1.15;margin-bottom:10px}
+  .sv p{font-size:14px;color:var(--mut);line-height:1.5;margin-bottom:16px}
+  .sv .rs{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin-top:auto}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;counter-reset:st}
+  .st{padding:0 24px 0 0;position:relative}
+  .st:before{counter-increment:st;content:'0' counter(st);display:block;font-family:var(--mono);font-size:12px;color:var(--dim);padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+  .st:after{content:'';position:absolute;left:0;top:33px;width:9px;height:9px;border-radius:50%;background:var(--acc);transform:translateY(-50%)}
+  .st b{font-family:var(--disp);font-weight:600;font-size:18px;display:block;margin-bottom:6px}
+  .st span{font-size:13.5px;color:var(--mut);line-height:1.45;display:block}
+  .principles{display:flex;flex-wrap:wrap;gap:10px;margin-top:48px}
+  .principles span{font-family:var(--mono);font-size:12px;color:var(--mut);border:1px solid var(--line);border-radius:99px;padding:7px 14px}
+  .principles span b{color:var(--acc);font-weight:400;margin-right:6px}
+  .ai-cta{margin-top:44px}
+  @media(max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:36px}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}.sv{padding:24px 18px}}
   .rows{border-top:1px solid var(--line)}
   .row{display:grid;grid-template-columns:44px 1fr auto;gap:22px;align-items:center;padding:30px 8px;border-bottom:1px solid var(--line);transition:padding .35s,background .35s;position:relative}
   .row:hover,.row:focus-visible{padding-left:22px;background:var(--pane)}
@@ -206,9 +227,10 @@
     <div class="nav-right">
       <div class="nav-links" id="navlinks">
         <a href="#about" data-cur><span class="i">01</span><span data-lang-en>About</span><span data-lang-ru>О себе</span></a>
-        <a href="#work" data-cur><span class="i">02</span><span data-lang-en>Work</span><span data-lang-ru>Проекты</span></a>
-        <a href="#awards" data-cur><span class="i">03</span><span data-lang-en>Awards</span><span data-lang-ru>Награды</span></a>
-        <a href="#contact" data-cur><span class="i">04</span><span data-lang-en>Contact</span><span data-lang-ru>Контакты</span></a>
+        <a href="#ai" data-cur><span class="i">02</span><span data-lang-en>AI integration</span><span data-lang-ru>Внедрение ИИ</span></a>
+        <a href="#work" data-cur><span class="i">03</span><span data-lang-en>Work</span><span data-lang-ru>Проекты</span></a>
+        <a href="#awards" data-cur><span class="i">04</span><span data-lang-en>Awards</span><span data-lang-ru>Награды</span></a>
+        <a href="#contact" data-cur><span class="i">05</span><span data-lang-en>Contact</span><span data-lang-ru>Контакты</span></a>
       </div>
       <div class="lang" role="group" aria-label="Language"><button type="button" id="en" data-cur aria-pressed="true" lang="en">EN</button><span style="color:var(--deco)" aria-hidden="true">/</span><button type="button" id="ru" data-cur aria-pressed="false" lang="ru">RU</button></div>
       <button type="button" class="menu" id="menu" aria-expanded="false" aria-controls="navlinks" aria-label="Menu"><i></i><i></i></button>
@@ -267,9 +289,51 @@
   </div>
 </section>
 
+<section id="ai">
+  <div class="wrap">
+    <div class="shead"><span class="snum">02</span><h2 class="rv"><span data-lang-en>AI integration</span><span data-lang-ru>Внедрение ИИ</span></h2></div>
+    <p class="ai-lead reveal" data-lang-en>I help businesses put AI to work on real processes — not a demo, but a system that <em>runs in production</em>, fits your data and doesn't leak it.</p>
+    <p class="ai-lead reveal" data-lang-ru>Помогаю бизнесу внедрять ИИ в реальные процессы — не демо, а систему, которая <em>работает в проде</em>, понимает ваши данные и не отдаёт их наружу.</p>
+    <div class="svc reveal">
+      <div class="sv"><span class="n">/01</span>
+        <div data-lang-en><h3>AI assistants & RAG</h3><p>Chatbots and assistants that answer from your documents, knowledge base and FAQ. Telegram, website or internal tool.</p></div>
+        <div data-lang-ru><h3>AI-ассистенты и RAG</h3><p>Боты и ассистенты, отвечающие по вашим документам, базе знаний и регламентам. Telegram, сайт или внутренний инструмент.</p></div>
+        <div class="rs">LLM · RAG · pgvector · aiogram</div></div>
+      <div class="sv"><span class="n">/02</span>
+        <div data-lang-en><h3>Process automation</h3><p>Classify requests, extract data from documents and emails, route tickets, generate drafts — hours of manual work turned into seconds.</p></div>
+        <div data-lang-ru><h3>Автоматизация процессов</h3><p>Классификация заявок, извлечение данных из документов и писем, маршрутизация обращений, черновики ответов — часы ручной работы за секунды.</p></div>
+        <div class="rs">LLM · NLP · FastAPI</div></div>
+      <div class="sv"><span class="n">/03</span>
+        <div data-lang-en><h3>ML on your data</h3><p>Demand and churn forecasting, scoring, recommendations, anomaly detection, computer vision — with metrics and explainable results.</p></div>
+        <div data-lang-ru><h3>ML на ваших данных</h3><p>Прогноз спроса и оттока, скоринг, рекомендации, поиск аномалий, компьютерное зрение — с метриками и объяснимыми результатами.</p></div>
+        <div class="rs">CatBoost · SHAP · YOLOv8</div></div>
+      <div class="sv"><span class="n">/04</span>
+        <div data-lang-en><h3>Integration & deploy</h3><p>Connecting AI to what you already use: 1C, CRM, websites, Telegram. Docker deploy on your server, monitoring and support.</p></div>
+        <div data-lang-ru><h3>Интеграция и деплой</h3><p>Подключение ИИ к тому, что уже работает: 1С, CRM, сайт, Telegram. Деплой в Docker на ваш сервер, мониторинг и поддержка.</p></div>
+        <div class="rs">1C · Docker · nginx · API</div></div>
+    </div>
+    <div class="steps reveal">
+      <div class="st" data-lang-en><b>Audit</b><span>Find the processes where AI pays off, estimate effect and cost.</span></div>
+      <div class="st" data-lang-ru><b>Аудит</b><span>Находим процессы, где ИИ окупается, оцениваем эффект и стоимость.</span></div>
+      <div class="st" data-lang-en><b>Prototype</b><span>Working MVP on your data in 1–2 weeks, measured on real cases.</span></div>
+      <div class="st" data-lang-ru><b>Прототип</b><span>Рабочий MVP на ваших данных за 1–2 недели, проверка на реальных кейсах.</span></div>
+      <div class="st" data-lang-en><b>Production</b><span>Integration, tests, deploy — reliable, logged, under control.</span></div>
+      <div class="st" data-lang-ru><b>Продакшн</b><span>Интеграция, тесты, деплой — надёжно, с логами и контролем.</span></div>
+      <div class="st" data-lang-en><b>Support</b><span>Monitoring quality, updating models and knowledge base.</span></div>
+      <div class="st" data-lang-ru><b>Поддержка</b><span>Следим за качеством, обновляем модели и базу знаний.</span></div>
+    </div>
+    <div class="principles reveal">
+      <span data-lang-en><b>●</b>Local LLMs — data stays with you</span><span data-lang-ru><b>●</b>Локальные LLM — данные остаются у вас</span>
+      <span data-lang-en><b>●</b>LLM never makes money decisions</span><span data-lang-ru><b>●</b>LLM не принимает финансовых решений</span>
+      <span data-lang-en><b>●</b>Measurable result, not hype</span><span data-lang-ru><b>●</b>Измеримый результат, а не хайп</span>
+    </div>
+    <div class="ai-cta reveal"><a href="https://t.me/byUnleash" class="btn pri mag" data-cur target="_blank" rel="noopener"><span data-lang-en>Discuss your task</span><span data-lang-ru>Обсудить задачу</span><span class="a">↗</span></a></div>
+  </div>
+</section>
+
 <section id="work">
   <div class="wrap">
-    <div class="shead"><span class="snum">02</span><h2 class="rv"><span data-lang-en>Selected work</span><span data-lang-ru>Избранные проекты</span></h2></div>
+    <div class="shead"><span class="snum">03</span><h2 class="rv"><span data-lang-en>Selected work</span><span data-lang-ru>Избранные проекты</span></h2></div>
     <div class="rows">
       <div class="row lock reveal" data-cur>
         <span class="idx">01</span>
@@ -307,7 +371,7 @@
 
 <section id="awards">
   <div class="wrap">
-    <div class="shead"><span class="snum">03</span><h2 class="rv"><span data-lang-en>Awards</span><span data-lang-ru>Награды</span></h2></div>
+    <div class="shead"><span class="snum">04</span><h2 class="rv"><span data-lang-en>Awards</span><span data-lang-ru>Награды</span></h2></div>
     <div class="ach reveal">
       <div class="aw"><span class="yr">WIN</span><div><div data-lang-en><b>National Treasure of Russia</b><span>Winner, regional & final stages · Informatics & ICT</span></div><div data-lang-ru><b>Национальное Достояние России</b><span>Победитель регионального и заключительного этапов · Информатика и ИКТ</span></div></div></div>
       <div class="aw"><span class="yr">#4</span><div><div data-lang-en><b>Sirius.AI · BioCAD</b><span>4th place — "AI: Artificial Intelligence" program</span></div><div data-lang-ru><b>Sirius.AI · BioCAD</b><span>4 место — программа «Сириус. ИИ»</span></div></div></div>
@@ -321,7 +385,7 @@
 
 <section id="contact" class="contact">
   <div class="wrap">
-    <div class="snum" style="margin-bottom:20px" aria-hidden="true">04</div>
+    <div class="snum" style="margin-bottom:20px" aria-hidden="true">05</div>
     <h2 class="big"><span data-lang-en>Let's build</span><span data-lang-ru>Давайте</span><br><a href="https://t.me/byUnleash" class="mag" data-cur target="_blank" rel="noopener"><span data-lang-en>something.</span><span data-lang-ru>сделаем.</span></a></h2>
     <p data-lang-en>Open to ML engineer / Python developer roles and interesting projects.</p>
     <p data-lang-ru>Открыт к позициям ML-инженера / Python-разработчика и интересным проектам.</p>
