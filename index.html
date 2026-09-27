@@ -5,12 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Danil Gneushev — ML Engineer</title>
 <meta name="description" content="Danil Gneushev — ML Engineer, Python Developer, Data Scientist. Portfolio, projects and contacts.">
+<meta name="author" content="Danil Gneushev">
+<meta name="theme-color" content="#0a0a0c">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://recara.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a0c'/%3E%3Ctext x='16' y='22.5' font-family='monospace' font-size='18' font-weight='700' text-anchor='middle' fill='%23c9f24e'%3Er.%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://recara.github.io/">
+<meta property="og:title" content="Danil Gneushev — ML Engineer">
+<meta property="og:description" content="ML engineer & Python developer: AI integration for business, RAG assistants, ML pipelines, FastAPI backends. Projects, awards and contacts.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Danil Gneushev","jobTitle":"ML Engineer","url":"https://recara.github.io/","address":{"@type":"PostalAddress","addressLocality":"Vladivostok","addressCountry":"RU"},"sameAs":["https://github.com/recara","https://t.me/byUnleash"],"knowsAbout":["AI integration","Machine Learning","Python","FastAPI","Data Science","RAG"]}</script>
+<script>
+  /* runs before paint: enable JS-only styles and pick the language to avoid a flash of the wrong one */
+  (function(d){d.className+=' js';var l=null;try{l=localStorage.getItem('lang');}catch(e){}
+    if(l!=='en'&&l!=='ru')l=(navigator.language||'').slice(0,2).toLowerCase()==='ru'?'ru':'en';
+    d.lang=l;d.setAttribute('data-lang',l);})(document.documentElement);
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0a0c; --pane:#0e0e11; --ink:#f2f0ea; --mut:#8b897f; --dim:#565349;
+    --bg:#0a0a0c; --pane:#0e0e11; --ink:#f2f0ea; --mut:#8b897f; --dim:#7f7c72; --deco:#4a483f;
     --acc:#c9f24e; --line:rgba(180,178,165,.13);
     --disp:'Bricolage Grotesque',sans-serif; --serif:'Instrument Serif',serif;
     --mono:'JetBrains Mono',monospace; --sans:'Inter',system-ui,sans-serif;
@@ -19,6 +38,10 @@
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:2px}
+  .skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--acc);color:#0a0a0c;font-family:var(--mono);font-size:13px;padding:10px 14px;border-radius:2px;transition:top .2s}
+  .skip:focus{top:16px}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   ::selection{background:var(--acc);color:#0a0a0c}
   .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px);position:relative;z-index:2}
   .mono{font-family:var(--mono)}
@@ -28,7 +51,9 @@
   .cur{width:40px;height:40px;border:1px solid #fff;margin:-20px 0 0 -20px;transition:width .25s,height .25s,margin .25s,opacity .25s}
   .curd{width:5px;height:5px;background:#fff;margin:-2.5px 0 0 -2.5px}
   .cur.big{width:76px;height:76px;margin:-38px 0 0 -38px}
-  body.touch .cur,body.touch .curd{display:none}
+  .cur,.curd{display:none}
+  html.js body.fine .cur,html.js body.fine .curd{display:block}
+  .cur.out,.curd.out{opacity:0}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,border-color .4s}
   nav.on{background:rgba(10,10,12,.7);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
@@ -39,19 +64,29 @@
   .nav-links{display:flex;gap:26px}
   .nav-links a{font-family:var(--mono);font-size:12.5px;color:var(--mut);transition:color .25s}
   .nav-links a .i{color:var(--dim);margin-right:5px}
-  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover,.nav-links a.act{color:var(--ink)}
+  .nav-links a.act .i{color:var(--acc)}
   .lang{display:flex;gap:2px}
   .lang button{font-family:var(--mono);background:transparent;color:var(--dim);border:none;padding:4px 6px;font-size:12px;cursor:pointer;transition:color .2s}
+  .lang button:hover{color:var(--ink)}
   .lang button.on{color:var(--acc)}
+  .menu{display:none;background:none;border:1px solid var(--line);color:var(--ink);width:40px;height:36px;border-radius:2px;cursor:pointer;position:relative}
+  .menu i{position:absolute;left:11px;right:11px;height:1.5px;background:currentColor;transition:transform .3s,top .3s}
+  .menu i:first-child{top:13px}.menu i:last-child{top:21px}
+  nav.open .menu i:first-child{top:17px;transform:rotate(45deg)}
+  nav.open .menu i:last-child{top:17px;transform:rotate(-45deg)}
 
-  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px}
+  .hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:120px 0 60px}
   .hgrid{display:grid;grid-template-columns:1.35fr .95fr;gap:56px;align-items:center;width:100%}
   .htop{font-family:var(--mono);font-size:12.5px;color:var(--dim);display:flex;justify-content:space-between;margin-bottom:34px;border-bottom:1px solid var(--line);padding-bottom:12px}
   .htop .r{color:var(--mut)}
   h1{font-family:var(--disp);font-weight:700;font-size:clamp(52px,9vw,118px);line-height:.9;letter-spacing:-.035em;margin-bottom:26px}
   h1 .l2{color:var(--mut)}
   .role{font-family:var(--disp);font-size:clamp(19px,2.6vw,30px);font-weight:500;letter-spacing:-.01em;margin-bottom:20px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-  .role .rot{color:var(--acc);font-family:var(--mono);font-weight:400;font-size:.82em}
+  .role .rot{color:var(--acc);font-family:var(--mono);font-weight:400;font-size:.82em;min-height:1.2em}
+  .avail{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:var(--mut);border:1px solid var(--line);border-radius:99px;padding:6px 13px 6px 11px;margin-bottom:26px}
+  .avail i{width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 rgba(201,242,78,.6);animation:pulse 2.2s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(201,242,78,0)}100%{box-shadow:0 0 0 0 rgba(201,242,78,0)}}
   .tag{font-family:var(--serif);font-size:clamp(19px,2.4vw,26px);color:var(--mut);font-style:italic;max-width:560px;margin-bottom:38px;line-height:1.35}
   .tag em{color:var(--ink);font-style:italic}
   .cta{display:flex;flex-wrap:wrap;gap:14px}
@@ -70,17 +105,20 @@
 
   .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:22px 0}
   .strip .tk{display:inline-block;animation:mv 34s linear infinite}
-  .strip span{font-family:var(--disp);font-weight:600;font-size:clamp(26px,4vw,46px);letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px var(--dim);margin:0 26px}
+  .strip span{font-family:var(--disp);font-weight:600;font-size:clamp(26px,4vw,46px);letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px var(--deco);margin:0 26px}
   .strip span.f{color:var(--ink);-webkit-text-stroke:0}
+  .strip span.s{color:var(--acc);-webkit-text-stroke:0}
+  .strip:hover .tk{animation-play-state:paused}
   @keyframes mv{to{transform:translateX(-50%)}}
 
-  section{padding:clamp(80px,11vw,150px) 0;position:relative;z-index:2}
+  section{padding:clamp(80px,11vw,150px) 0;position:relative;z-index:2;scroll-margin-top:40px}
   .shead{display:flex;align-items:baseline;gap:16px;margin-bottom:56px}
   .snum{font-family:var(--mono);font-size:13px;color:var(--acc)}
   h2{font-family:var(--disp);font-size:clamp(30px,5.5vw,60px);font-weight:600;letter-spacing:-.03em;line-height:.95}
   .rv{overflow:hidden;display:inline-block;vertical-align:top}
-  .rv>span{display:inline-block;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1)}
-  .rv.in>span{transform:none}
+  .rv>span{display:inline-block;padding-bottom:.08em}
+  html.js .rv>span{transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1)}
+  html.js .rv.in>span{transform:none}
 
   .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:40px}
   .about-grid .k{font-family:var(--mono);font-size:12.5px;color:var(--dim);padding-top:6px}
@@ -96,9 +134,30 @@
   .skill li{font-family:var(--disp);font-size:17px;font-weight:500;padding:5px 0;color:var(--ink);transition:color .2s,padding-left .2s;cursor:default}
   .skill li:hover{color:var(--acc);padding-left:8px}
 
+  .ai-lead{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.6vw,28px);color:var(--mut);max-width:760px;line-height:1.35;margin-bottom:48px}
+  .ai-lead em{color:var(--ink)}
+  .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .sv{background:var(--bg);padding:28px 24px 26px;transition:background .3s;display:flex;flex-direction:column}
+  .sv:hover{background:var(--pane)}
+  .sv .n{font-family:var(--mono);font-size:12px;color:var(--acc);margin-bottom:18px}
+  .sv h3{font-family:var(--disp);font-size:22px;font-weight:600;letter-spacing:-.015em;line-height:1.15;margin-bottom:10px}
+  .sv p{font-size:14px;color:var(--mut);line-height:1.5;margin-bottom:16px}
+  .sv .rs{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin-top:auto}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;counter-reset:st}
+  .st{padding:0 24px 0 0;position:relative}
+  .st:before{counter-increment:st;content:'0' counter(st);display:block;font-family:var(--mono);font-size:12px;color:var(--dim);padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+  .st:after{content:'';position:absolute;left:0;top:33px;width:9px;height:9px;border-radius:50%;background:var(--acc);transform:translateY(-50%)}
+  .st b{font-family:var(--disp);font-weight:600;font-size:18px;display:block;margin-bottom:6px}
+  .st span{font-size:13.5px;color:var(--mut);line-height:1.45;display:block}
+  .principles{display:flex;flex-wrap:wrap;gap:10px;margin-top:48px}
+  .principles span{font-family:var(--mono);font-size:12px;color:var(--mut);border:1px solid var(--line);border-radius:99px;padding:7px 14px}
+  .principles span b{color:var(--acc);font-weight:400;margin-right:6px}
+  .ai-cta{margin-top:44px}
+  @media(max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:36px}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}.sv{padding:24px 18px}}
   .rows{border-top:1px solid var(--line)}
   .row{display:grid;grid-template-columns:44px 1fr auto;gap:22px;align-items:center;padding:30px 8px;border-bottom:1px solid var(--line);transition:padding .35s,background .35s;position:relative}
-  .row:hover{padding-left:22px;background:var(--pane)}
+  .row:hover,.row:focus-visible{padding-left:22px;background:var(--pane)}
   .row .idx{font-family:var(--mono);font-size:12px;color:var(--dim)}
   .row:hover .idx{color:var(--acc)}
   .row .rt{font-family:var(--disp);font-size:clamp(24px,3.5vw,40px);font-weight:600;letter-spacing:-.02em;line-height:1.05}
@@ -130,58 +189,73 @@
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   footer p{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
 
-  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
-  .reveal.in{opacity:1;transform:none}
+  html.js .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  html.js .reveal.in{opacity:1;transform:none}
 
-  #intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.76,0,.24,1)}
+  #intro{display:none}
+  html.js #intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.76,0,.24,1)}
   #intro.gone{transform:translateY(-101%)}
   #intro .t{font-family:var(--mono);font-size:14px;color:var(--acc);letter-spacing:.1em}
 
   [data-lang-ru]{display:none}
-  body.ru [data-lang-en]{display:none}
-  body.ru [data-lang-ru]{display:revert}
-  @media(max-width:860px){.hgrid{grid-template-columns:1fr;gap:36px}.viz{max-width:360px}.about-grid{grid-template-columns:1fr;gap:16px}.nav-links{display:none}.row{grid-template-columns:30px 1fr;gap:14px}.row .re{grid-column:2;margin-top:12px}}
-  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}.reveal,.rv>span{opacity:1;transform:none}}
+  html[data-lang=ru] [data-lang-en]{display:none}
+  html[data-lang=ru] [data-lang-ru]{display:revert}
+  @media(max-width:860px){
+    .menu{display:block}
+    .nav-links{position:fixed;top:74px;left:0;right:0;flex-direction:column;gap:0;background:rgba(10,10,12,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:8px clamp(20px,5vw,64px) 18px;visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .25s,transform .25s,visibility .25s}
+    .nav-links a{font-size:15px;padding:14px 0;border-bottom:1px solid var(--line)}
+    .nav-links a:last-child{border-bottom:0}
+    nav.open{background:rgba(10,10,12,.96);border-bottom:1px solid var(--line)}
+    nav.open .nav-links{visibility:visible;opacity:1;transform:none}
+    .nav-right{gap:14px}
+    .hgrid{grid-template-columns:1fr;gap:36px}.viz{max-width:420px;width:100%}.about-grid{grid-template-columns:1fr;gap:16px}.row{grid-template-columns:30px 1fr;gap:14px}.row .re{grid-column:2;margin-top:12px}}
+  @media(max-width:520px){.aw{padding:22px 18px}.skill{padding:22px 18px}.htop{flex-direction:column;gap:4px}footer .wrap{flex-direction:column}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition-duration:.01s!important}html.js .reveal,html.js .rv>span{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<div id="intro"><div class="t mono" id="introt">recara.dev</div></div>
-<div class="grain"></div>
-<div class="cur" id="cur"></div>
-<div class="curd" id="curd"></div>
+<a class="skip" href="#main"><span data-lang-en>Skip to content</span><span data-lang-ru>Перейти к содержанию</span></a>
+<div id="intro" aria-hidden="true"><div class="t mono">recara.dev</div></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="curd" id="curd" aria-hidden="true"></div>
 
-<nav id="nav">
+<nav id="nav" aria-label="Main">
   <div class="wrap">
-    <a href="#top" class="brand" data-cur>recara<b>.dev</b></a>
+    <a href="#top" class="brand" data-cur aria-label="recara.dev — home">recara<b>.dev</b></a>
     <div class="nav-right">
-      <div class="nav-links">
+      <div class="nav-links" id="navlinks">
         <a href="#about" data-cur><span class="i">01</span><span data-lang-en>About</span><span data-lang-ru>О себе</span></a>
-        <a href="#work" data-cur><span class="i">02</span><span data-lang-en>Work</span><span data-lang-ru>Проекты</span></a>
-        <a href="#awards" data-cur><span class="i">03</span><span data-lang-en>Awards</span><span data-lang-ru>Награды</span></a>
-        <a href="#contact" data-cur><span class="i">04</span><span data-lang-en>Contact</span><span data-lang-ru>Контакты</span></a>
+        <a href="#ai" data-cur><span class="i">02</span><span data-lang-en>AI integration</span><span data-lang-ru>Внедрение ИИ</span></a>
+        <a href="#work" data-cur><span class="i">03</span><span data-lang-en>Work</span><span data-lang-ru>Проекты</span></a>
+        <a href="#awards" data-cur><span class="i">04</span><span data-lang-en>Awards</span><span data-lang-ru>Награды</span></a>
+        <a href="#contact" data-cur><span class="i">05</span><span data-lang-en>Contact</span><span data-lang-ru>Контакты</span></a>
       </div>
-      <div class="lang"><button id="en" class="on" data-cur onclick="setLang('en')">EN</button><span style="color:var(--dim)">/</span><button id="ru" data-cur onclick="setLang('ru')">RU</button></div>
+      <div class="lang" role="group" aria-label="Language"><button type="button" id="en" data-cur aria-pressed="true" lang="en">EN</button><span style="color:var(--deco)" aria-hidden="true">/</span><button type="button" id="ru" data-cur aria-pressed="false" lang="ru">RU</button></div>
+      <button type="button" class="menu" id="menu" aria-expanded="false" aria-controls="navlinks" aria-label="Menu"><i></i><i></i></button>
     </div>
   </div>
 </nav>
 
+<main id="main">
 <header class="hero" id="top">
   <div class="wrap">
     <div class="hgrid">
       <div>
         <div class="htop"><span data-lang-en>Portfolio — Vladivostok</span><span data-lang-ru>Портфолио — Владивосток</span><span class="r">2026 © ML / Python</span></div>
-        <h1><span class="scr" data-text="Danil">Danil</span><br><span class="l2 scr" data-text="Gneushev">Gneushev</span></h1>
-        <div class="role"><span data-lang-en>I build</span><span data-lang-ru>Я делаю</span><span class="rot" id="rot"></span></div>
+        <div class="avail"><i aria-hidden="true"></i><span data-lang-en>Open to ML / Python roles</span><span data-lang-ru>Открыт к ML / Python-позициям</span></div>
+        <h1 aria-label="Danil Gneushev"><span class="scr" data-text="Danil" aria-hidden="true">Danil</span><br><span class="l2 scr" data-text="Gneushev" aria-hidden="true">Gneushev</span></h1>
+        <div class="role"><span data-lang-en>I build</span><span data-lang-ru>Я делаю</span><span class="rot" id="rot" aria-hidden="true"></span><span class="sr" data-lang-en>ML pipelines, FastAPI backends, AI bots with RAG and data products</span><span class="sr" data-lang-ru>ML-пайплайны, бэкенды на FastAPI, AI-ботов с RAG и data-продукты</span></div>
         <p class="tag" data-lang-en>ML engineer & Python developer turning data and messy production systems into <em>working intelligence</em> — from research notebook to a running API.</p>
         <p class="tag" data-lang-ru>ML-инженер и Python-разработчик, превращающий данные и хаотичный прод в <em>работающий интеллект</em> — от исследовательского ноутбука до рабочего API.</p>
         <div class="cta">
           <a href="https://github.com/recara" class="btn pri mag" data-cur target="_blank" rel="noopener">GitHub<span class="a">↗</span></a>
           <a href="https://t.me/byUnleash" class="btn mag" data-cur target="_blank" rel="noopener">Telegram<span class="a">↗</span></a>
-          <a href="resume.pdf" class="btn mag" data-cur target="_blank" rel="noopener"><span data-lang-en>Resume</span><span data-lang-ru>Резюме</span><span class="a">↓</span></a>
+          <a href="resume.pdf" class="btn mag" data-cur target="_blank" rel="noopener" type="application/pdf"><span data-lang-en>Resume</span><span data-lang-ru>Резюме</span><span class="a">↓</span></a>
         </div>
       </div>
-      <div class="viz" data-cur>
+      <div class="viz" aria-hidden="true">
         <canvas id="latent"></canvas>
         <div class="cr mono">latent&nbsp;space</div>
         <div class="cap mono"><b>●</b> 4 clusters · live embedding</div>
@@ -190,7 +264,7 @@
   </div>
 </header>
 
-<div class="strip"><div class="tk" id="tk"></div></div>
+<div class="strip" aria-hidden="true"><div class="tk" id="tk"></div></div>
 
 <section id="about">
   <div class="wrap">
@@ -215,9 +289,51 @@
   </div>
 </section>
 
+<section id="ai">
+  <div class="wrap">
+    <div class="shead"><span class="snum">02</span><h2 class="rv"><span data-lang-en>AI integration</span><span data-lang-ru>Внедрение ИИ</span></h2></div>
+    <p class="ai-lead reveal" data-lang-en>I help businesses put AI to work on real processes — not a demo, but a system that <em>runs in production</em>, fits your data and doesn't leak it.</p>
+    <p class="ai-lead reveal" data-lang-ru>Помогаю бизнесу внедрять ИИ в реальные процессы — не демо, а систему, которая <em>работает в проде</em>, понимает ваши данные и не отдаёт их наружу.</p>
+    <div class="svc reveal">
+      <div class="sv"><span class="n">/01</span>
+        <div data-lang-en><h3>AI assistants & RAG</h3><p>Chatbots and assistants that answer from your documents, knowledge base and FAQ. Telegram, website or internal tool.</p></div>
+        <div data-lang-ru><h3>AI-ассистенты и RAG</h3><p>Боты и ассистенты, отвечающие по вашим документам, базе знаний и регламентам. Telegram, сайт или внутренний инструмент.</p></div>
+        <div class="rs">LLM · RAG · pgvector · aiogram</div></div>
+      <div class="sv"><span class="n">/02</span>
+        <div data-lang-en><h3>Process automation</h3><p>Classify requests, extract data from documents and emails, route tickets, generate drafts — hours of manual work turned into seconds.</p></div>
+        <div data-lang-ru><h3>Автоматизация процессов</h3><p>Классификация заявок, извлечение данных из документов и писем, маршрутизация обращений, черновики ответов — часы ручной работы за секунды.</p></div>
+        <div class="rs">LLM · NLP · FastAPI</div></div>
+      <div class="sv"><span class="n">/03</span>
+        <div data-lang-en><h3>ML on your data</h3><p>Demand and churn forecasting, scoring, recommendations, anomaly detection, computer vision — with metrics and explainable results.</p></div>
+        <div data-lang-ru><h3>ML на ваших данных</h3><p>Прогноз спроса и оттока, скоринг, рекомендации, поиск аномалий, компьютерное зрение — с метриками и объяснимыми результатами.</p></div>
+        <div class="rs">CatBoost · SHAP · YOLOv8</div></div>
+      <div class="sv"><span class="n">/04</span>
+        <div data-lang-en><h3>Integration & deploy</h3><p>Connecting AI to what you already use: 1C, CRM, websites, Telegram. Docker deploy on your server, monitoring and support.</p></div>
+        <div data-lang-ru><h3>Интеграция и деплой</h3><p>Подключение ИИ к тому, что уже работает: 1С, CRM, сайт, Telegram. Деплой в Docker на ваш сервер, мониторинг и поддержка.</p></div>
+        <div class="rs">1C · Docker · nginx · API</div></div>
+    </div>
+    <div class="steps reveal">
+      <div class="st" data-lang-en><b>Audit</b><span>Find the processes where AI pays off, estimate effect and cost.</span></div>
+      <div class="st" data-lang-ru><b>Аудит</b><span>Находим процессы, где ИИ окупается, оцениваем эффект и стоимость.</span></div>
+      <div class="st" data-lang-en><b>Prototype</b><span>Working MVP on your data in 1–2 weeks, measured on real cases.</span></div>
+      <div class="st" data-lang-ru><b>Прототип</b><span>Рабочий MVP на ваших данных за 1–2 недели, проверка на реальных кейсах.</span></div>
+      <div class="st" data-lang-en><b>Production</b><span>Integration, tests, deploy — reliable, logged, under control.</span></div>
+      <div class="st" data-lang-ru><b>Продакшн</b><span>Интеграция, тесты, деплой — надёжно, с логами и контролем.</span></div>
+      <div class="st" data-lang-en><b>Support</b><span>Monitoring quality, updating models and knowledge base.</span></div>
+      <div class="st" data-lang-ru><b>Поддержка</b><span>Следим за качеством, обновляем модели и базу знаний.</span></div>
+    </div>
+    <div class="principles reveal">
+      <span data-lang-en><b>●</b>Local LLMs — data stays with you</span><span data-lang-ru><b>●</b>Локальные LLM — данные остаются у вас</span>
+      <span data-lang-en><b>●</b>LLM never makes money decisions</span><span data-lang-ru><b>●</b>LLM не принимает финансовых решений</span>
+      <span data-lang-en><b>●</b>Measurable result, not hype</span><span data-lang-ru><b>●</b>Измеримый результат, а не хайп</span>
+    </div>
+    <div class="ai-cta reveal"><a href="https://t.me/byUnleash" class="btn pri mag" data-cur target="_blank" rel="noopener"><span data-lang-en>Discuss your task</span><span data-lang-ru>Обсудить задачу</span><span class="a">↗</span></a></div>
+  </div>
+</section>
+
 <section id="work">
   <div class="wrap">
-    <div class="shead"><span class="snum">02</span><h2 class="rv"><span data-lang-en>Selected work</span><span data-lang-ru>Избранные проекты</span></h2></div>
+    <div class="shead"><span class="snum">03</span><h2 class="rv"><span data-lang-en>Selected work</span><span data-lang-ru>Избранные проекты</span></h2></div>
     <div class="rows">
       <div class="row lock reveal" data-cur>
         <span class="idx">01</span>
@@ -255,7 +371,7 @@
 
 <section id="awards">
   <div class="wrap">
-    <div class="shead"><span class="snum">03</span><h2 class="rv"><span data-lang-en>Awards</span><span data-lang-ru>Награды</span></h2></div>
+    <div class="shead"><span class="snum">04</span><h2 class="rv"><span data-lang-en>Awards</span><span data-lang-ru>Награды</span></h2></div>
     <div class="ach reveal">
       <div class="aw"><span class="yr">WIN</span><div><div data-lang-en><b>National Treasure of Russia</b><span>Winner, regional & final stages · Informatics & ICT</span></div><div data-lang-ru><b>Национальное Достояние России</b><span>Победитель регионального и заключительного этапов · Информатика и ИКТ</span></div></div></div>
       <div class="aw"><span class="yr">#4</span><div><div data-lang-en><b>Sirius.AI · BioCAD</b><span>4th place — "AI: Artificial Intelligence" program</span></div><div data-lang-ru><b>Sirius.AI · BioCAD</b><span>4 место — программа «Сириус. ИИ»</span></div></div></div>
@@ -269,8 +385,8 @@
 
 <section id="contact" class="contact">
   <div class="wrap">
-    <div class="snum" style="margin-bottom:20px">04</div>
-    <div class="big"><span data-lang-en>Let's build</span><span data-lang-ru>Давайте</span><br><a href="https://t.me/byUnleash" class="mag" data-cur target="_blank" rel="noopener"><span data-lang-en>something.</span><span data-lang-ru>сделаем.</span></a></div>
+    <div class="snum" style="margin-bottom:20px" aria-hidden="true">05</div>
+    <h2 class="big"><span data-lang-en>Let's build</span><span data-lang-ru>Давайте</span><br><a href="https://t.me/byUnleash" class="mag" data-cur target="_blank" rel="noopener"><span data-lang-en>something.</span><span data-lang-ru>сделаем.</span></a></h2>
     <p data-lang-en>Open to ML engineer / Python developer roles and interesting projects.</p>
     <p data-lang-ru>Открыт к позициям ML-инженера / Python-разработчика и интересным проектам.</p>
     <div class="clinks">
@@ -279,18 +395,23 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
-  <div class="wrap"><p>© 2026 Danil Gneushev</p><p>built & hosted on GitHub Pages</p><p>Vladivostok · UTC+10</p></div>
+  <div class="wrap"><p>© <span id="yr">2026</span> Danil Gneushev</p><p><span data-lang-en>built by hand · hosted on GitHub Pages</span><span data-lang-ru>сделано вручную · GitHub Pages</span></p><p>Vladivostok · UTC+10</p></div>
 </footer>
 
 <script>
   var CH='ABCDEFGHJKLMNPQRSTUVWXYZ#%&/<>*01';
-  function scramble(el){
-    var text=el.dataset.text||el.textContent, n=text.length, start=performance.now(), dur=700+n*45;
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  function scrambleTo(el,text,dur){
+    if(reduce){el.textContent=text;return;}
+    var n=text.length,start=performance.now();
     function tick(now){
-      var p=Math.min(1,(now-start)/dur), reveal=Math.floor(p*n), out='';
-      for(var i=0;i<n;i++){ out+= (i<reveal||text[i]===' ')?text[i]:CH[Math.floor(Math.random()*CH.length)]; }
+      var p=Math.min(1,(now-start)/dur),rv=Math.floor(p*n),out='';
+      for(var i=0;i<n;i++) out+=(i<rv||text[i]===' ')?text[i]:CH[Math.floor(Math.random()*CH.length)];
       el.textContent=out;
       if(p<1) requestAnimationFrame(tick); else el.textContent=text;
     }
@@ -298,83 +419,94 @@
   }
 
   var rotWords={en:['ML pipelines','FastAPI backends','AI bots · RAG','data products'],ru:['ML-пайплайны','бэкенды · FastAPI','AI-ботов · RAG','data-продукты']};
-  var rI=0,rT;
+  var rI=0,rT,rotEl=document.getElementById('rot');
   function rotLoop(){
-    var lang=document.body.classList.contains('ru')?'ru':'en', w=rotWords[lang][rI%rotWords[lang].length], el=document.getElementById('rot');
-    if(!el)return;
-    var n=w.length,s=performance.now(),dur=520;
-    function tk(now){var p=Math.min(1,(now-s)/dur),rv=Math.floor(p*n),o='';for(var i=0;i<n;i++)o+=(i<rv||w[i]===' ')?w[i]:CH[Math.floor(Math.random()*CH.length)];el.textContent=o;if(p<1)requestAnimationFrame(tk);else el.textContent=w;}
-    requestAnimationFrame(tk);
-    rI++; clearTimeout(rT); rT=setTimeout(rotLoop,2400);
+    var w=rotWords[root.lang==='ru'?'ru':'en'];
+    scrambleTo(rotEl,w[rI%w.length],520);
+    rI++; clearTimeout(rT);
+    if(!reduce) rT=setTimeout(rotLoop,2400);
   }
 
   function setLang(l){
-    document.body.classList.toggle('ru', l==='ru');
-    document.documentElement.lang=l;
-    document.getElementById('en').classList.toggle('on', l==='en');
-    document.getElementById('ru').classList.toggle('on', l==='ru');
+    root.lang=l; root.setAttribute('data-lang',l);
+    ['en','ru'].forEach(function(k){var b=document.getElementById(k);b.classList.toggle('on',k===l);b.setAttribute('aria-pressed',k===l);});
     try{localStorage.setItem('lang',l);}catch(e){}
-    clearTimeout(rT); rI=0; rotLoop();
+    rI=0; rotLoop();
   }
+  document.getElementById('en').addEventListener('click',function(){setLang('en');});
+  document.getElementById('ru').addEventListener('click',function(){setLang('ru');});
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
 
   (function(){
     var tk=['Python','FastAPI','PyTorch','scikit-learn','XGBoost','CatBoost','LightGBM','pandas','SHAP','Optuna','PostgreSQL','Docker','TypeScript','React','Ollama','RAG'];
-    var h=tk.map(function(x,i){return '<span'+(i%3===0?' class="f"':'')+'>'+x+'</span><span style="color:var(--acc);-webkit-text-stroke:0">/</span>'}).join('');
+    var h=tk.map(function(x,i){return '<span'+(i%3===0?' class="f"':'')+'>'+x+'</span><span class="s">/</span>';}).join('');
     document.getElementById('tk').innerHTML=h+h;
   })();
 
-  window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('on',scrollY>40);});
+  // nav: background on scroll, mobile menu, active section
+  var nav=document.getElementById('nav'),menu=document.getElementById('menu');
+  function onScroll(){nav.classList.toggle('on',scrollY>40);}
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}
+  menu.addEventListener('click',function(){var o=nav.classList.toggle('open');menu.setAttribute('aria-expanded',o);});
+  document.querySelectorAll('#navlinks a').forEach(function(a){a.addEventListener('click',closeMenu);});
+  addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+  var links={};document.querySelectorAll('#navlinks a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var so=new IntersectionObserver(function(es){es.forEach(function(e){var a=links[e.target.id];if(!a)return;
+    if(e.isIntersecting){for(var k in links){links[k].classList.remove('act');links[k].removeAttribute('aria-current');}a.classList.add('act');a.setAttribute('aria-current','true');}});},{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section[id]').forEach(function(s){so.observe(s);});
 
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
   document.querySelectorAll('.reveal,.rv').forEach(function(el,i){el.style.transitionDelay=(i%5*60)+'ms';io.observe(el);});
 
-  var touch=matchMedia('(hover:none)').matches;
-  if(touch) document.body.classList.add('touch');
-  else{
-    var cur=document.getElementById('cur'),curd=document.getElementById('curd'),cx=0,cy=0,dx=0,dy=0;
-    addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;curd.style.transform='translate('+cx+'px,'+cy+'px)';});
-    (function loop(){dx+=(cx-dx)*.16;dy+=(cy-dy)*.16;cur.style.transform='translate('+dx+'px,'+dy+'px)';requestAnimationFrame(loop);})();
+  // custom cursor + magnetic buttons: only for a real mouse
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce){
+    document.body.classList.add('fine');
+    var cur=document.getElementById('cur'),curd=document.getElementById('curd'),cx=-100,cy=-100,dx=-100,dy=-100,raf=0;
+    function loop(){dx+=(cx-dx)*.16;dy+=(cy-dy)*.16;cur.style.transform='translate('+dx+'px,'+dy+'px)';
+      raf=(Math.abs(cx-dx)+Math.abs(cy-dy)>.3)?requestAnimationFrame(loop):0;}
+    addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;curd.style.transform='translate('+cx+'px,'+cy+'px)';
+      cur.classList.remove('out');curd.classList.remove('out');if(!raf)raf=requestAnimationFrame(loop);},{passive:true});
+    document.addEventListener('mouseleave',function(){cur.classList.add('out');curd.classList.add('out');});
     document.querySelectorAll('[data-cur]').forEach(function(el){el.addEventListener('mouseenter',function(){cur.classList.add('big');});el.addEventListener('mouseleave',function(){cur.classList.remove('big');});});
     document.querySelectorAll('.mag').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+(e.clientX-r.left-r.width/2)*.28+'px,'+(e.clientY-r.top-r.height/2)*.4+'px)';});b.addEventListener('mouseleave',function(){b.style.transform='';});});
   }
 
+  // latent-space canvas: stable points, sized in CSS px, paused when off-screen or tab hidden
   (function(){
-    var cv=document.getElementById('latent'); if(!cv)return;
-    var ctx=cv.getContext('2d'),W,H,DPR=Math.min(2,devicePixelRatio||1),pts=[],t=0;
-    var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-    function size(){var r=cv.getBoundingClientRect();W=cv.width=r.width*DPR;H=cv.height=r.height*DPR;build();}
-    function build(){
-      pts=[]; var cl=[[.3,.32],[.7,.3],[.32,.72],[.72,.7]];
-      cl.forEach(function(c,ci){for(var i=0;i<26;i++){var a=Math.random()*6.28,rr=Math.random()*.14;pts.push({bx:c[0]+Math.cos(a)*rr,by:c[1]+Math.sin(a)*rr,ph:Math.random()*6.28,cl:ci});}});
+    var cv=document.getElementById('latent'); if(!cv||!cv.getContext)return;
+    var ctx=cv.getContext('2d'),W=0,H=0,DPR=Math.min(2,devicePixelRatio||1),pts=[],t=0,run=false,vis=true,raf=0;
+    [[.3,.32],[.7,.3],[.32,.72],[.72,.7]].forEach(function(c,ci){for(var i=0;i<26;i++){var a=Math.random()*6.28,rr=Math.random()*.14;pts.push({bx:c[0]+Math.cos(a)*rr,by:c[1]+Math.sin(a)*rr,ph:Math.random()*6.28,cl:ci});}});
+    var col=['#c9f24e','rgba(139,137,127,.7)','rgba(242,240,234,.85)','rgba(139,137,127,.7)'];
+    function size(){var r=cv.getBoundingClientRect();if(!r.width)return;W=r.width;H=r.height;cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);frame();}
+    function frame(){
+      ctx.clearRect(0,0,W,H);
+      var lim=Math.max(40,W*.1);
+      for(var i=0;i<pts.length;i++){var p=pts[i];p.x=(p.bx+Math.sin(t+p.ph)*.012)*W;p.y=(p.by+Math.cos(t*1.1+p.ph)*.012)*H;}
+      ctx.lineWidth=.5;
+      for(i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j];if(a.cl!==b.cl)continue;var d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<lim){ctx.strokeStyle='rgba(139,137,127,'+((1-d/lim)*.3).toFixed(3)+')';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+      for(i=0;i<pts.length;i++){p=pts[i];ctx.fillStyle=col[p.cl];ctx.beginPath();ctx.arc(p.x,p.y,p.cl===0?2.2:1.7,0,6.2832);ctx.fill();}
     }
-    var pal=['#c9f24e','#f2f0ea','#8b897f','#c9f24e'];
-    function draw(){
-      t+=.006; ctx.clearRect(0,0,W,H);
-      for(var i=0;i<pts.length;i++){var p=pts[i];
-        var x=(p.bx+Math.sin(t+p.ph)*.012)*W, y=(p.by+Math.cos(t*1.1+p.ph)*.012)*H;
-        p.x=x;p.y=y;
-      }
-      ctx.lineWidth=DPR*.5;
-      for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j];if(a.cl!==b.cl)continue;var d=Math.hypot(a.x-b.x,a.y-b.y);if(d<52*DPR){ctx.strokeStyle='rgba(139,137,127,'+(1-d/(52*DPR))*.28+')';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
-      for(var i=0;i<pts.length;i++){var p=pts[i];ctx.fillStyle=p.cl===0?pal[0]:(p.cl===2?'rgba(242,240,234,.85)':'rgba(139,137,127,.7)');ctx.beginPath();ctx.arc(p.x,p.y,(p.cl===0?2.2:1.7)*DPR,0,7);ctx.fill();}
-      requestAnimationFrame(draw);
-    }
-    size(); addEventListener('resize',size); if(!reduce)draw(); else{t=1;draw();}
+    function loop(){t+=.006;frame();raf=run?requestAnimationFrame(loop):0;}
+    function update(){var want=vis&&!document.hidden&&!reduce;if(want&&!run){run=true;raf=requestAnimationFrame(loop);}else if(!want){run=false;cancelAnimationFrame(raf);raf=0;}}
+    new IntersectionObserver(function(es){vis=es[0].isIntersecting;update();}).observe(cv);
+    document.addEventListener('visibilitychange',update);
+    if(window.ResizeObserver) new ResizeObserver(size).observe(cv); else addEventListener('resize',size);
+    t=1; size(); update();
   })();
 
-  (function initLang(){
-    var saved=null;try{saved=localStorage.getItem('lang');}catch(e){}
-    if(saved!=='en'&&saved!=='ru')saved=(navigator.language||'').slice(0,2)==='ru'?'ru':'en';
-    setLang(saved);
-  })();
+  setLang(root.lang==='ru'?'ru':'en');
+
   var introDone=false;
   function finishIntro(){
     if(introDone)return; introDone=true;
-    var i=document.getElementById('intro'); if(i)i.classList.add('gone');
-    document.querySelectorAll('h1 .scr').forEach(function(el,k){setTimeout(function(){scramble(el);},k*140);});
+    var i=document.getElementById('intro'); if(i){i.classList.add('gone');setTimeout(function(){i.remove();},1100);}
+    document.querySelectorAll('h1 .scr').forEach(function(el,k){setTimeout(function(){scrambleTo(el,el.dataset.text,700+el.dataset.text.length*45);},k*140);});
   }
-  window.addEventListener('load',function(){setTimeout(finishIntro,550);});
-  setTimeout(finishIntro,1900);
+  if(reduce) finishIntro();
+  else { addEventListener('load',function(){setTimeout(finishIntro,450);}); setTimeout(finishIntro,1600); }
 </script>
 </body>
 </html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://recara.github.io/sitemap.xml
