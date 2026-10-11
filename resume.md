@@ -2,8 +2,8 @@
 
 Data Scientist / Python-разработчик
 
-Владивосток · recara.github.io · github.com/recara
-Telegram: @byUnleash
+Владивосток · GitHub: github.com/recara · Telegram: @byUnleash
+Портфолио: https://recara.github.io/
 
 Профиль
 
