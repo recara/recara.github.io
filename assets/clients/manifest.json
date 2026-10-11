@@ -1,0 +1,32 @@
+[
+  {
+    "name": "ТОКИО",
+    "url": "https://tokyo-bar.ru/",
+    "logo": "assets/clients/tokyo.svg"
+  },
+  {
+    "name": "PAOLA",
+    "url": "https://paolamacaron.shop/",
+    "logo": "assets/clients/paola.png"
+  },
+  {
+    "name": "ВИК",
+    "url": "https://tdvik.ru/",
+    "logo": "assets/clients/vik.svg"
+  },
+  {
+    "name": "Антарктида",
+    "url": "https://antarktida-dv.ru/",
+    "logo": "assets/clients/antarktida.png"
+  },
+  {
+    "name": "Паллетторг-ДВ",
+    "url": "https://pallettorgdv.ru/",
+    "logo": "assets/clients/pallettorg.png"
+  },
+  {
+    "name": "MarketDo4a",
+    "url": "https://marketdo4a.com/",
+    "logo": "assets/clients/marketdo4a.svg"
+  }
+]
