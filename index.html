@@ -79,7 +79,7 @@
   .snum{font-family:var(--mono);font-size:13px;color:var(--acc)}
   h2{font-family:var(--disp);font-size:clamp(30px,5.5vw,60px);font-weight:600;letter-spacing:-.03em;line-height:.95}
   .rv{overflow:hidden;display:inline-block;vertical-align:top}
-  .rv>span{display:inline-block;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1)}
+  .rv>span{display:inline-block;transform:none;transition:transform 1s cubic-bezier(.16,1,.3,1)}
   .rv.in>span{transform:none}
 
   .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:40px}
@@ -130,10 +130,10 @@
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   footer p{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
 
-  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal{opacity:1;transform:none;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
   .reveal.in{opacity:1;transform:none}
 
-  #intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.76,0,.24,1)}
+  #intro{display:none!important;position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.76,0,.24,1)}
   #intro.gone{transform:translateY(-101%)}
   #intro .t{font-family:var(--mono);font-size:14px;color:var(--acc);letter-spacing:.1em}
 
@@ -142,6 +142,8 @@
   body.ru [data-lang-ru]{display:revert}
   @media(max-width:860px){.hgrid{grid-template-columns:1fr;gap:36px}.viz{max-width:360px}.about-grid{grid-template-columns:1fr;gap:16px}.nav-links{display:none}.row{grid-template-columns:30px 1fr;gap:14px}.row .re{grid-column:2;margin-top:12px}}
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}.reveal,.rv>span{opacity:1;transform:none}}
+
+.product-row{grid-template-columns:30px minmax(0,1.2fr) minmax(0,1fr);gap:28px;padding-block:44px;align-items:start}.product-row:hover{padding-left:8px}.project-outcome{font-size:18px;color:var(--ink);margin-top:14px;line-height:1.4}.project-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:18px}.project-demo{min-height:44px;display:inline-flex;align-items:center;gap:8px;color:var(--acc);font-size:14px;border-bottom:1px solid var(--line)}.private-note,.project-note{font-size:12px;color:var(--mut)}.project-note{margin-top:10px}.product-row .rs{color:var(--mut)}.project-preview{min-width:0;margin-top:5px}.project-preview img{display:block;width:100%;height:auto;border:1px solid var(--line)}.project-preview figcaption{font-size:11px;color:var(--mut);margin-top:10px}.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:5px}section[id],article[id]{scroll-margin-top:100px}@media(max-width:860px){.product-row{grid-template-columns:24px minmax(0,1fr);gap:14px}.project-preview{grid-column:2}.project-outcome{font-size:17px}.product-row .rs{line-height:1.8}}
 </style>
 </head>
 <body>
@@ -173,18 +175,18 @@
         <div class="htop"><span data-lang-en>Portfolio — Vladivostok</span><span data-lang-ru>Портфолио — Владивосток</span><span class="r">2026 © ML / Python</span></div>
         <h1><span class="scr" data-text="Danil">Danil</span><br><span class="l2 scr" data-text="Gneushev">Gneushev</span></h1>
         <div class="role"><span data-lang-en>I build</span><span data-lang-ru>Я делаю</span><span class="rot" id="rot"></span></div>
-        <p class="tag" data-lang-en>ML engineer & Python developer turning data and messy production systems into <em>working intelligence</em> — from research notebook to a running API.</p>
-        <p class="tag" data-lang-ru>ML-инженер и Python-разработчик, превращающий данные и хаотичный прод в <em>работающий интеллект</em> — от исследовательского ноутбука до рабочего API.</p>
+        <p class="tag" data-lang-en>Python developer and ML engineer. I build <em>data products people can use</em>: inventory reviews, supply planning and video analytics.</p>
+        <p class="tag" data-lang-ru>Python-разработчик и ML-инженер. Делаю <em>инструменты для понятных задач</em>: сверки остатков, планирования поставок и анализа видео.</p>
         <div class="cta">
           <a href="https://github.com/recara" class="btn pri mag" data-cur target="_blank" rel="noopener">GitHub<span class="a">↗</span></a>
           <a href="https://t.me/byUnleash" class="btn mag" data-cur target="_blank" rel="noopener">Telegram<span class="a">↗</span></a>
-          <a href="resume.pdf" class="btn mag" data-cur target="_blank" rel="noopener"><span data-lang-en>Resume</span><span data-lang-ru>Резюме</span><span class="a">↓</span></a>
+          <a href="resume.pdf?v=20261011" class="btn mag" data-cur target="_blank" rel="noopener"><span data-lang-en>Resume</span><span data-lang-ru>Резюме</span><span class="a">↓</span></a>
         </div>
       </div>
       <div class="viz" data-cur>
         <canvas id="latent"></canvas>
         <div class="cr mono">latent&nbsp;space</div>
-        <div class="cap mono"><b>●</b> 4 clusters · live embedding</div>
+        <div class="cap mono"><b>●</b> illustrative clusters</div>
       </div>
     </div>
   </div>
@@ -199,15 +201,15 @@
       <div class="k reveal" data-lang-en>[ profile / focus ]</div>
       <div class="k reveal" data-lang-ru>[ профиль / фокус ]</div>
       <div>
-        <p class="reveal" data-lang-en>ML engineer and Python developer with a broad practical base — from classical machine learning and Kaggle competitions to production backends on FastAPI and full-stack TypeScript apps. Over the past year I shipped <b>10+ projects</b>: ML pipelines, CV models, AI bots with RAG on local LLMs, and real client web platforms.</p>
-        <p class="reveal" data-lang-ru>ML-инженер и Python-разработчик с широкой практической базой — от классического ML и Kaggle-соревнований до production-бэкендов на FastAPI и full-stack приложений на TypeScript. За последний год реализовал <b>10+ проектов</b>: ML-пайплайны, CV-модели, AI-боты с RAG на локальных LLM и реальные клиентские веб-платформы.</p>
+        <p class="reveal" data-lang-en>ML engineer and Python developer with a broad practical base — from classical machine learning and Kaggle competitions to production backends on FastAPI and full-stack TypeScript apps. My work includes <b>data products, computer vision and backends</b>. I connect the calculation pipeline to a usable interface, exports and a reproducible demo.</p>
+        <p class="reveal" data-lang-ru>ML-инженер и Python-разработчик с широкой практической базой — от классического ML и Kaggle-соревнований до production-бэкендов на FastAPI и full-stack приложений на TypeScript. Работаю над <b>продуктами на данных, компьютерным зрением и бэкендом</b>. Связываю расчёты с интерфейсом, выгрузками и воспроизводимым демо.</p>
         <p class="reveal" data-lang-en>Since September 2025 I work at <b>DA | Studio</b> — production incident diagnostics, 1C integrations, SEO and performance. Studying Software Engineering at FEFU. I care about reproducible, interpretable and maintainable code.</p>
         <p class="reveal" data-lang-ru>С сентября 2025 работаю в <b>DA | Studio</b> — диагностика production-инцидентов, интеграции с 1С, SEO и производительность. Учусь на «Программной инженерии» в ДВФУ. Ценю воспроизводимый, интерпретируемый и поддерживаемый код.</p>
       </div>
     </div>
     <div style="margin-top:64px" class="skills reveal">
-      <div class="skill"><h3>ML</h3><ul><li>scikit-learn</li><li>XGBoost</li><li>CatBoost</li><li>LightGBM</li><li>SHAP · Optuna</li></ul></div>
-      <div class="skill"><h3 data-lang-en>Data</h3><h3 data-lang-ru>Данные</h3><ul><li>pandas · numpy</li><li>matplotlib</li><li>seaborn</li><li>Parquet</li><li>SQL</li></ul></div>
+      <div class="skill"><h3>ML</h3><ul><li>scikit-learn</li><li>XGBoost</li><li>CatBoost</li><li>LightGBM · YOLO</li><li>SHAP · Optuna</li></ul></div>
+      <div class="skill"><h3 data-lang-en>Data</h3><h3 data-lang-ru>Данные</h3><ul><li>pandas · numpy</li><li>matplotlib</li><li>seaborn</li><li>Parquet</li><li>SQL · DuckDB</li></ul></div>
       <div class="skill"><h3>Backend</h3><ul><li>FastAPI</li><li>aiogram 3</li><li>PostgreSQL</li><li>pgvector</li><li>Ollama · RAG</li></ul></div>
       <div class="skill"><h3>Web</h3><ul><li>TypeScript</li><li>React · Vite</li><li>Flask</li><li>YandexGPT</li></ul></div>
       <div class="skill"><h3 data-lang-en>Infra</h3><h3 data-lang-ru>Инфра</h3><ul><li>Git</li><li>Docker</li><li>Linux · nginx</li><li>1C</li></ul></div>
@@ -219,33 +221,37 @@
   <div class="wrap">
     <div class="shead"><span class="snum">02</span><h2 class="rv"><span data-lang-en>Selected work</span><span data-lang-ru>Избранные проекты</span></h2></div>
     <div class="rows">
+<article class="row product-row reveal" id="project-inventory"><span class="idx">01</span><div class="project-copy"><h3 class="rt">Inventory</h3><p class="project-outcome" data-lang-ru>Сверка остатков → решения команды</p><p class="project-outcome" data-lang-en>Stock reconciliation → team decisions</p><p class="rd" data-lang-ru>Учёт и пересчёт рядом: расхождения, спорные строки, журнал решений и сводка по точкам. Сотрудник проверяет причины и выгружает итог в Excel.</p><p class="rd" data-lang-en>Compare counted and recorded stock, review exceptions, keep a decision log and export the result to Excel. People confirm the causes.</p><p class="rs">Python · FastAPI · DuckDB · OData · Excel</p><div class="project-actions"><a class="project-demo" href="https://inventory.200.165.228.179.sslip.io/about" target="_blank" rel="noopener"><span data-lang-ru>Открыть демо</span><span data-lang-en>Open demo</span> ↗</a><span class="private-note"><span data-lang-ru>Исходники приватные</span><span data-lang-en>Private source</span></span></div><p class="project-note"><span data-lang-ru>Демо на вымышленных данных</span><span data-lang-en>Synthetic demo data</span></p></div><figure class="project-preview"><img src="assets/projects/inventory.jpg" alt="Inventory: stock review / разбор остатков, synthetic demo" loading="lazy" width="800" height="480"><figcaption data-lang-ru>Рабочий интерфейс</figcaption><figcaption data-lang-en>Application interface</figcaption></figure></article>
+<article class="row product-row reveal" id="project-forecast"><span class="idx">02</span><div class="project-copy"><h3 class="rt">Forecast</h3><p class="project-outcome" data-lang-ru>История продаж → план поставки</p><p class="project-outcome" data-lang-en>Sales history → supply plan</p><p class="rd" data-lang-ru>Рекомендации по товарам и точкам на D+2, D+3 и D+4. История спроса, ограничения поставки, ручные правки и заявка в Excel.</p><p class="rd" data-lang-en>Point-by-SKU recommendations for D+2, D+3 and D+4. Demand history, shipment constraints, manual adjustments and Excel orders.</p><p class="rs">Python · CatBoost · HGB · pandas · FastAPI</p><div class="project-actions"><a class="project-demo" href="https://forecast.200.165.228.179.sslip.io/about" target="_blank" rel="noopener"><span data-lang-ru>Открыть демо</span><span data-lang-en>Open demo</span> ↗</a><span class="private-note"><span data-lang-ru>Исходники приватные</span><span data-lang-en>Private source</span></span></div><p class="project-note"><span data-lang-ru>Демо на вымышленных данных</span><span data-lang-en>Synthetic demo data</span></p></div><figure class="project-preview"><img src="assets/projects/forecast.jpg" alt="Forecast: order plan / заявка, synthetic demo" loading="lazy" width="800" height="480"><figcaption data-lang-ru>Рабочий интерфейс</figcaption><figcaption data-lang-en>Application interface</figcaption></figure></article>
+<article class="row product-row reveal" id="project-cameraflow"><span class="idx">03</span><div class="project-copy"><h3 class="rt">CameraFlow</h3><p class="project-outcome" data-lang-ru>Видеозапись → проезды и направления</p><p class="project-outcome" data-lang-en>Video → crossings and directions</p><p class="rd" data-lang-ru>Загрузите запись, проведите линию и получите подсчёт в обе стороны. События можно проверить по размеченному видео и выгрузить в CSV.</p><p class="rd" data-lang-en>Upload a recording, draw a counting line and measure crossings in both directions. Check annotated video and export events as CSV.</p><p class="rs">Python · YOLO · ByteTrack · React · TypeScript</p><div class="project-actions"><a class="project-demo" href="https://cameraflow.200.165.228.179.sslip.io/" target="_blank" rel="noopener"><span data-lang-ru>Открыть демо</span><span data-lang-en>Open demo</span> ↗</a><span class="private-note"><span data-lang-ru>Исходники приватные</span><span data-lang-en>Private source</span></span></div><p class="project-note"><span data-lang-ru>Демо с общим доступом · короткие записи</span><span data-lang-en>Shared demo · short recordings</span></p></div><figure class="project-preview"><img src="assets/projects/cameraflow.png" alt="CameraFlow: crossing counters / счётчики проездов" loading="lazy" width="800" height="480"><figcaption data-lang-ru>Рабочий интерфейс</figcaption><figcaption data-lang-en>Application interface</figcaption></figure></article>
+<article class="row product-row reveal" id="project-trafficvision"><span class="idx">04</span><div class="project-copy"><h3 class="rt">TrafficVision</h3><p class="project-outcome" data-lang-ru>Точка обслуживания → подтверждённые пересечения</p><p class="project-outcome" data-lang-en>Service point → confirmed crossings</p><p class="rd" data-lang-ru>Локальная аналитика drive-through: раздельные события проезда через точку обслуживания и дорожного объезда. Геометрия задаётся явно; результаты хранятся в SQLite.</p><p class="rd" data-lang-en>Local drive-through analytics with separate service-point and downstream road-crossing events. Explicit geometry, SQLite storage and an independent worker.</p><p class="rs">Python · YOLO · ByteTrack · SQLite · Streamlit</p><div class="project-actions"><span class="private-note"><span data-lang-ru>Исходники приватные</span><span data-lang-en>Private source</span></span></div><p class="project-note"><span data-lang-ru>Локальный запуск · без публичного демо</span><span data-lang-en>Local deployment · no public demo</span></p></div><figure class="project-preview"><img src="assets/projects/trafficvision.svg" alt="TrafficVision: point_pass and road_bypass event diagram / схема событий" loading="lazy" width="800" height="480"><figcaption data-lang-ru>Схема событий, не обработанный кадр</figcaption><figcaption data-lang-en>Event diagram, not a processed frame</figcaption></figure></article>
       <div class="row lock reveal" data-cur>
-        <span class="idx">01</span>
+        <span class="idx">05</span>
         <div><div class="rt">AI bot</div><div class="rd" data-lang-en>FastAPI + aiogram 3 assistant with local LLM (Ollama) and RAG. Deterministic FSM flows kept apart from AI intent classification — the LLM never touches billing or decisions.</div><div class="rd" data-lang-ru>Ассистент на FastAPI + aiogram 3 с локальным LLM (Ollama) и RAG. Детерминированные FSM-сценарии отделены от AI-классификации — LLM не участвует в расчётах и решениях.</div><div class="rs">Python · FastAPI · aiogram · PostgreSQL · pgvector · Ollama</div></div>
         <span class="re"><span data-lang-en>Private</span><span data-lang-ru>Приватный</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
       </div>
       <div class="row lock reveal" data-cur>
-        <span class="idx">02</span>
-        <div><div class="rt">Trader MVP</div><div class="rd" data-lang-en>Production-ready fintech MVP: JWT + Argon2id auth, 3 business scenarios, notifications, RU/ZH localization (150+ keys), 100% type-safe TypeScript, Docker deploy.</div><div class="rd" data-lang-ru>Production-ready fintech MVP: JWT + Argon2id, 3 бизнес-сценария, уведомления, локализация RU/ZH (150+ ключей), 100% типобезопасный TypeScript, деплой в Docker.</div><div class="rs">Express · TypeScript · Prisma · React 18 · Vite · Docker</div></div>
+        <span class="idx">06</span>
+        <div><div class="rt">Trader MVP</div><div class="rd" data-lang-en>Fintech MVP: JWT + Argon2id auth, 3 business scenarios, notifications, RU/ZH localization (150+ keys), TypeScript, Docker deploy.</div><div class="rd" data-lang-ru>Fintech MVP: JWT + Argon2id, 3 бизнес-сценария, уведомления, локализация RU/ZH (150+ ключей), TypeScript, деплой в Docker.</div><div class="rs">Express · TypeScript · Prisma · React 18 · Vite · Docker</div></div>
         <span class="re"><span data-lang-en>Private</span><span data-lang-ru>Приватный</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
       </div>
       <a class="row reveal" data-cur href="https://github.com/recara/ods-ai-yolov8-segmentation" target="_blank" rel="noopener">
-        <span class="idx">03</span>
+        <span class="idx">07</span>
         <div><div class="rt">YOLOv8 segmentation</div><div class="rd" data-lang-en>Instance segmentation on a custom dataset with YOLOv8, plus a COCO→YOLOv8 annotation converter and training pipeline.</div><div class="rd" data-lang-ru>Instance segmentation на кастомном датасете (YOLOv8) с конвертером COCO→YOLOv8 и пайплайном обучения.</div><div class="rs">Python · YOLOv8 · Ultralytics · COCO</div></div>
         <span class="re">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
       </a>
       <a class="row reveal" data-cur href="https://github.com/recara/data-fusion-contest-2026" target="_blank" rel="noopener">
-        <span class="idx">04</span>
+        <span class="idx">08</span>
         <div><div class="rt">Data Fusion 2026</div><div class="rd" data-lang-en>Solution for the "Страж" task — ML modeling on tabular data with exploration and submission pipeline.</div><div class="rd" data-lang-ru>Решение задачи «Страж» — ML на табличных данных с исследованием и пайплайном сабмита.</div><div class="rs">Python · pandas · scikit-learn</div></div>
         <span class="re">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
       </a>
       <a class="row reveal" data-cur href="https://github.com/recara/e-cup-2025-ml-challenge" target="_blank" rel="noopener">
-        <span class="idx">05</span>
+        <span class="idx">09</span>
         <div><div class="rt">E-CUP 2025</div><div class="rd" data-lang-en>Recommender-system challenge on Ozon data — training and fine-tuning recsys models, baseline and stacking experiments.</div><div class="rd" data-lang-ru>Соревнование по рекомендательным системам на данных Ozon — обучение и файнтюнинг recsys-моделей, baseline и stacking.</div><div class="rs">Python · pandas · ML</div></div>
         <span class="re">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
       </a>
       <div class="row lock reveal" data-cur>
-        <span class="idx">06</span>
+        <span class="idx">10</span>
         <div><div class="rt" data-lang-en>SEO clustering</div><div class="rt" data-lang-ru>SEO-кластеризация</div><div class="rd" data-lang-en>Offline clustering of competitor search queries with local multilingual embeddings, HDBSCAN, representative-key selection and embedding cache.</div><div class="rd" data-lang-ru>Офлайн-кластеризация запросов конкурентов: локальные мультиязычные эмбеддинги, HDBSCAN, выбор ключа кластера, кэш эмбеддингов.</div><div class="rs">Python · sentence-transformers · HDBSCAN</div></div>
         <span class="re"><span data-lang-en>Private</span><span data-lang-ru>Приватный</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
       </div>
@@ -325,8 +331,8 @@
 
   window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('on',scrollY>40);});
 
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
-  document.querySelectorAll('.reveal,.rv').forEach(function(el,i){el.style.transitionDelay=(i%5*60)+'ms';io.observe(el);});
+  var io=typeof IntersectionObserver==='function'?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14}):null;
+  document.querySelectorAll('.reveal,.rv').forEach(function(el,i){el.style.transitionDelay=(i%5*60)+'ms';if(io)io.observe(el);});
 
   var touch=matchMedia('(hover:none)').matches;
   if(touch) document.body.classList.add('touch');
@@ -357,7 +363,7 @@
       ctx.lineWidth=DPR*.5;
       for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j];if(a.cl!==b.cl)continue;var d=Math.hypot(a.x-b.x,a.y-b.y);if(d<52*DPR){ctx.strokeStyle='rgba(139,137,127,'+(1-d/(52*DPR))*.28+')';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
       for(var i=0;i<pts.length;i++){var p=pts[i];ctx.fillStyle=p.cl===0?pal[0]:(p.cl===2?'rgba(242,240,234,.85)':'rgba(139,137,127,.7)');ctx.beginPath();ctx.arc(p.x,p.y,(p.cl===0?2.2:1.7)*DPR,0,7);ctx.fill();}
-      requestAnimationFrame(draw);
+      if(!reduce)requestAnimationFrame(draw);
     }
     size(); addEventListener('resize',size); if(!reduce)draw(); else{t=1;draw();}
   })();

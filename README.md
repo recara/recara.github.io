@@ -1,17 +1,12 @@
-# recara.github.io
+# Personal portfolio
 
-Personal portfolio landing page — [recara.github.io](https://recara.github.io)
+Danil Gneushev / Данил Гнеушев. Static RU/EN portfolio on https://recara.github.io/.
 
-Danil Gneushev · ML Engineer · Python Developer · Data Scientist
+- `index.html`: profile, project cases, awards, contacts.
+- `resume.pdf`: updated two-page Russian resume.
+- `resume.md`: editable resume content.
+- `assets/projects/`: existing public demo screenshots and an authored TrafficVision event diagram. No credentials.
 
-Static single-page site (HTML/CSS/JS, no build step) with RU/EN language toggle, hosted on GitHub Pages.
+Inventory, Forecast and CameraFlow link to their independent HTTPS demos; their applications require the previously issued login. TrafficVision is a local project without a public demo. All four source repositories are private; portfolio visitors can contact the author for access.
 
-## Contents
-
-- `index.html` — the landing page
-- `resume.pdf` — resume
-
-## Contacts
-
-- GitHub: [@recara](https://github.com/recara)
-- Telegram: [@byUnleash](https://t.me/byUnleash)
+Serve locally with `python3 -m http.server 8894 --bind 127.0.0.1`. Publishing main updates GitHub Pages.
