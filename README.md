@@ -3,7 +3,7 @@
 Danil Gneushev / Данил Гнеушев. Static RU/EN portfolio on https://recara.github.io/.
 
 - `index.html`: profile, project cases, awards, contacts.
-- `resume.pdf`: updated two-page Russian resume.
+- `resume.pdf`: updated three-page Russian resume.
 - `resume.md`: editable resume content.
 - `assets/projects/`: existing public demo screenshots and an authored TrafficVision event diagram. No credentials.
 
@@ -12,3 +12,5 @@ Inventory, Forecast and CameraFlow link to their independent HTTPS demos; their 
 Serve locally with `python3 -m http.server 8894 --bind 127.0.0.1`. Publishing main updates GitHub Pages.
 
 Professional profile update (11 October 2026): commercial experience, six task-based technology groups, project implementation/check details and a readable engineering overview. RU/EN language switching, anchors, images and responsive layout checked at 1280, 768 and 360 px. Test counts are publication snapshots, dated explicitly.
+
+Resume expanded after a working-folder project review: commercial AI use cases, Tokio restaurant purchasing, coffee-point CV, Wheel Changer contributions, Primorye AI Navigator, PAOLA, VIK, ProfBlesk and Kotlin. Commercial context supplied by the author; technical scope checked from local source.
