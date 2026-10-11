@@ -10,3 +10,5 @@ Danil Gneushev / Данил Гнеушев. Static RU/EN portfolio on https://re
 Inventory, Forecast and CameraFlow link to their independent HTTPS demos; their applications require the previously issued login. TrafficVision is a local project without a public demo. All four source repositories are private; portfolio visitors can contact the author for access.
 
 Serve locally with `python3 -m http.server 8894 --bind 127.0.0.1`. Publishing main updates GitHub Pages.
+
+Professional profile update (11 October 2026): commercial experience, six task-based technology groups, project implementation/check details and a readable engineering overview. RU/EN language switching, anchors, images and responsive layout checked at 1280, 768 and 360 px. Test counts are publication snapshots, dated explicitly.
