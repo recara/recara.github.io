@@ -22,6 +22,8 @@
   function setLang(next) {
     if (!['ru', 'en'].includes(next)) return;
     language = next;
+    document.title = next === 'en' ? 'Danil Gneushev | Python Backend & Applied ML' : 'Данил Гнеушев | Python Backend & Applied ML';
+    document.querySelector('meta[name="description"]').content = next === 'en' ? 'Danil Gneushev: Python developer, applied ML and computer vision. Commercial projects, ML cases, technology stack and resume.' : 'Данил Гнеушев: Python-разработчик, прикладной ML и компьютерное зрение. Коммерческие проекты, ML-кейсы, стек и резюме.';
     document.documentElement.lang = next;
     document.querySelectorAll('[data-set-lang]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.setLang === next)));
     updateControls();
