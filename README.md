@@ -13,4 +13,6 @@ Serve locally with `python3 -m http.server 8894 --bind 127.0.0.1`. Publishing ma
 
 Professional profile update (11 October 2026): commercial experience, six task-based technology groups, project implementation/check details and a readable engineering overview. RU/EN language switching, anchors, images and responsive layout checked at 1280, 768 and 360 px. Test counts are publication snapshots, dated explicitly.
 
-Resume expanded after a working-folder project review: commercial AI use cases, Tokio restaurant purchasing, coffee-point CV, Wheel Changer contributions, Primorye AI Navigator, PAOLA, VIK, ProfBlesk and Kotlin. Commercial context supplied by the author; technical scope checked from local source.
+Resume expanded after a working-folder project review: commercial AI use cases, Tokio restaurant purchasing, coffee-point CV, ITMO research publication, Wheel Changer contributions, PAOLA, VIK and Kotlin. Commercial context supplied by the author; technical scope checked from local source.
+
+Author-supplied clients: Tokio, VIK, avt.25 and Antarktida (existing-site work for 152-FZ). ITMO authorship/title checked against the conference page and full text. ProfBlesk and Primorye AI Navigator removed at the author’s request.
