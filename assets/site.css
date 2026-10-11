@@ -45,3 +45,7 @@ html:not(.js) .language-switch{visibility:hidden}
 @media(max-width:1100px){.ml-sticker{right:10px;top:2px;width:145px}}
 @media(max-width:767px){.ml-sticker{right:12px;top:-25px;width:150px}.cv-sticker{right:9px;top:-32px;width:68px}}
 @media(max-width:390px){.ml-sticker{right:10px;top:-24px;width:130px}}
+/* Keep the full technology list readable without collapsing it. */
+@media(min-width:768px){.stack-heading{position:sticky;top:120px;align-self:start}}
+.stack-list p{line-height:1.95;font-size:13px;max-width:620px}
+@media(max-width:767px){.stack-list p{font-size:12px}}
