@@ -1,13 +1,13 @@
 Гнеушев Данил Анатольевич
 
-Data Scientist / Python-разработчик
+Data Scientist Intern / Python-разработчик
 
 Владивосток · GitHub: github.com/recara · Telegram: @byUnleash
 Портфолио: https://recara.github.io/
 
 Профиль
 
-Студент 2-го курса программной инженерии ДВФУ. Работаю над коммерческими задачами прогнозирования закупок и видеоаналитики: обработка данных, признаки, ML-расчёты, API и интерфейс для проверки результатов. Есть практика с табличным ML, предобученными CV-моделями и LLM/RAG-интеграциями. Соавтор публикации об AI-интервьюере с прокторингом. Ищу стажировку в Data Science / прикладном ML.
+Ищу стажировку в Data Science / Risk&Research. Студент 2-го курса ДВФУ; могу работать 30 часов в неделю. Практика: табличный ML, feature engineering и проверка моделей, NLP/эмбеддинги и RAG. Разрабатываю коммерческий прогноз закупок для ресторанов «Токио» и сервисы видеоаналитики. Есть антифрод-кейс на банковских транзакциях и научная публикация об AI-интервьюере.
 
 Образование
 
@@ -17,8 +17,8 @@ Data Scientist / Python-разработчик
 Технологии и методы
 
 Python и данные: pandas, NumPy, SQL, DuckDB, PostgreSQL, SQLite, CSV/Parquet, Jupyter.
-Табличный ML: scikit-learn, CatBoost, HistGradientBoosting; временные признаки, бэктесты, WAPE и bias. XGBoost, LightGBM, Optuna, SHAP.
-Computer vision / DL: предобученные YOLO/Ultralytics, ByteTrack, OpenCV; обработка видео, трекинг, пересечения линий.
+Табличный ML: scikit-learn, CatBoost, HistGradientBoosting; feature engineering, временные признаки, бэктесты, GroupKFold, WAPE/bias. LightGBM, XGBoost, Optuna, SHAP.
+Computer vision / DL: PyTorch (эксперименты), предобученные YOLO/Ultralytics, ByteTrack, OpenCV; обработка видео, трекинг, пересечения линий.
 Текст / NLP и AI: sentence-transformers, эмбеддинги, HDBSCAN, Ollama, RAG, pgvector, интеграции LLM.
 Сервисы: FastAPI, aiogram, REST API, Git, pytest, Docker, Linux; React/TypeScript для интерфейсов.
 
@@ -52,6 +52,12 @@ PAOLA - WordPress/WooCommerce; ВИК - поддержка сайта; avt.25 - 
 
 Технические кейсы: recara.github.io/#work. Приватные исходники могут быть предоставлены по согласованию.
 
+Data Fusion 2026 · антифрод на банковских транзакциях
+
+Задача «Страж»: признаки для классификации операций, GroupKFold, LightGBM и CatBoost. Эксперименты с нейросетью и ансамблем; оценка PR-AUC. Репозиторий: <link href="https://github.com/recara/data-fusion-contest-2026" color="#2344af">github.com/recara/data-fusion-contest-2026</link>.
+
+Python · pandas · LightGBM · CatBoost · PyTorch.
+
 Forecast · прогноз закупок для сети ресторанов «Токио»
 
 Подготовка истории продаж по точкам и SKU, временные признаки, расчёты HGB/CatBoost и рекомендации на D+2, D+3, D+4. Бэктесты и метрики WAPE/bias; ограничения поставки и ручная корректировка заявки. Результат - сервис планирования с экспортом Excel.
@@ -70,20 +76,18 @@ ETL/OData-контекст в DuckDB, сверка учётных остатко
 
 Python · FastAPI · DuckDB · SQL · OData.
 
-AI-бот и SEO-кластеризация · работа с текстом
+NLP / RAG · AI-бот и SEO-кластеризация
 
-Ассистент на FastAPI/aiogram с локальной LLM и RAG; финансовые расчёты отделены от генерации ответов. Кластеризация поисковых запросов: мультиязычные эмбеддинги, HDBSCAN, репрезентативные запросы и кэширование.
+Ассистент с локальной LLM и retrieval-augmented generation (RAG): поиск контекста для ответа. Группировка поисковых запросов по смыслу: мультиязычные эмбеддинги и HDBSCAN.
 
 Python · Ollama · PostgreSQL/pgvector · sentence-transformers · HDBSCAN.
 
-ML-соревнования и CV-исследования
+E-CUP 2025 / YOLOv8 segmentation
 
-Data Fusion 2026 («Страж»), E-CUP 2025 (рекомендательные модели) и YOLOv8 segmentation. Исследование данных, baseline и обучение; конвертация COCO-аннотаций в формат YOLOv8.
+Рекомендательный baseline на данных Ozon: популярность, свежесть и сезонность, исключение просмотренных товаров, top-100. CV-эксперименты: обучение, валидация и инференс YOLOv8; подготовка COCO-аннотаций.
 
-Python · pandas · scikit-learn · Ultralytics.
+Python · NumPy · pandas · PyArrow · Parquet · YOLOv8.
 
-Научная публикация · ИТМО, 2026
+Научная публикация
 
-«ИИ-интервьюер для технических собеседований с системой прокторинга». Соавтор с Д. А. Трубачевым; научный руководитель - А. Г. Балахчи. XV Конгресс молодых учёных ИТМО, сборник тезисов.
-
-Веб-сервис адаптивного технического интервью и ML-прокторинга. React/TypeScript, FastAPI, PostgreSQL, SciBox API. Публикация и полный текст на сайте ИТМО.
+ИИ-интервьюер для технических собеседований с системой прокторинга · kmu.itmo.ru/digests/article/16567.
