@@ -3,7 +3,7 @@
 Danil Gneushev / Данил Гнеушев. Static RU/EN portfolio on https://recara.github.io/.
 
 - `index.html`: profile, project cases, awards, contacts.
-- `resume.pdf`: updated three-page Russian resume.
+- `resume.pdf`: focused two-page Russian Data Science resume.
 - `resume.md`: editable resume content.
 - `assets/projects/`: existing public demo screenshots and an authored TrafficVision event diagram. No credentials.
 
@@ -16,3 +16,5 @@ Professional profile update (11 October 2026): commercial experience, six task-b
 Resume expanded after a working-folder project review: commercial AI use cases, Tokio restaurant purchasing, coffee-point CV, ITMO research publication, Wheel Changer contributions, PAOLA, VIK and Kotlin. Commercial context supplied by the author; technical scope checked from local source.
 
 Author-supplied clients: Tokio, VIK, avt.25 and Antarktida (existing-site work for 152-FZ). ITMO authorship/title checked against the conference page and full text. ProfBlesk and Primorye AI Navigator removed at the author’s request.
+
+Resume refocused for the Risk & Research Data Science internship brief: commercial forecasting/CV, data, text/RAG work and ITMO publication lead; unrelated web details shortened. palletorgdv design refresh added from the author’s clarification. No files deleted: “cleanup” referred to resume text.
