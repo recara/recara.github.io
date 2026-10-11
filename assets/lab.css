@@ -4,3 +4,15 @@
 @media(max-width:1000px){.lab-grid{gap:48px 28px}.lab-case-heading h4{font-size:21px}.lab-copy h5{font-size:23px}.lab-case-heading>a,.lab-case-heading>span{font-size:9px}}
 @media(max-width:767px){.lab-section{margin-top:60px;padding-top:40px}.lab-section-heading h3{font-size:32px}.lab-section-heading>p{font-size:14px;margin-top:19px}.lab-grid{grid-template-columns:1fr;gap:44px;margin-top:32px}.lab-case-heading{padding:16px 0}.lab-case-heading h4{font-size:23px}.lab-copy{padding-top:18px}.lab-copy h5{font-size:25px}.lab-copy p{font-size:14px}.lab-play{min-width:104px;font-size:10px}.lab-figure figcaption>span{font-size:9px}.lab-tech{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.lab-case *{animation:none!important;transition:none!important}}
+/* A technical sketchbook: distinct cut corners and small, useful process stamps. */
+.lab-figure{position:relative;padding-top:14px}.lab-figure:before{content:'context → answer';display:block;position:absolute;right:14px;top:0;z-index:1;background:#c7d6ff;color:#152138;padding:7px 12px;font:11px var(--mono);transform:rotate(3deg);border-radius:2px 12px 2px 12px;box-shadow:0 3px 0 #080c1255}
+[data-lab=trader] .lab-figure:before{content:'event → notify';background:#ffd1ac;transform:rotate(-3deg)}
+[data-lab=segmentation] .lab-figure:before{content:'pixels → masks';background:#d7e8c8;transform:rotate(2deg)}
+[data-lab=risk] .lab-figure:before{content:'features → score';background:#e4d3fa;transform:rotate(-3deg)}
+[data-lab=recommendations] .lab-figure:before{content:'history → top 100';background:#ffd1ac}
+[data-lab=clustering] .lab-figure:before{content:'queries → groups';background:#d7e8c8;transform:rotate(-2deg)}
+.lab-figure svg{border-radius:28px 4px 28px 4px}
+[data-lab=trader] .lab-figure svg,[data-lab=risk] .lab-figure svg{border-radius:4px 28px 4px 28px}
+[data-lab=clustering] .lab-figure svg{border-radius:36px}
+.lab-figure .lab-svg-label{font-size:14px}.lab-figure figcaption{justify-content:flex-end;min-height:60px}.lab-play{min-height:44px;font-size:12px}
+.lab-case-heading>a,.lab-case-heading>span{font-size:11px}.lab-tech{font-size:11px}

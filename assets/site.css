@@ -49,3 +49,17 @@ html:not(.js) .language-switch{visibility:hidden}
 @media(min-width:768px){.stack-heading{position:sticky;top:120px;align-self:start}}
 .stack-list p{line-height:1.95;font-size:13px;max-width:620px}
 @media(max-width:767px){.stack-list p{font-size:12px}}
+/* Brand marks as individual die-cut stickers, with room for their silhouettes. */
+.client-logos{grid-template-columns:repeat(6,minmax(0,1fr));align-items:center;gap:25px;padding:22px 9px 28px}
+.client-logo{height:120px;padding:20px;background:#f5f1e9;border:4px solid #fffaf0;box-shadow:0 6px 0 #05080c55;transform:rotate(-4deg);transition:transform .25s,box-shadow .25s;border-radius:42% 58% 48% 52% / 55% 43% 57% 45%}
+.client-logo:nth-child(2){transform:rotate(4deg);border-radius:14px 42px 14px 42px}
+.client-logo:nth-child(3){transform:rotate(-3deg);border-radius:50%;height:132px}
+.client-logo:nth-child(4){transform:rotate(5deg);border-radius:45px 12px 45px 12px;height:142px}
+.client-logo:nth-child(5){transform:rotate(-5deg);border-radius:45% 18% 45% 18%}
+.client-logo:nth-child(6){transform:rotate(3deg);border-radius:18px 48px 18px 48px}
+.client-logo img{max-height:85px;width:100%;object-fit:contain}
+.client-logo:hover,.client-logo:focus-visible{transform:rotate(0) translateY(-5px);box-shadow:0 11px 0 #05080c55}
+.diagram figcaption{justify-content:flex-end}.demo-control{min-height:44px}
+@media(max-width:1100px){.client-logos{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}}
+@media(max-width:767px){.client-logos{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px;padding:16px 8px 24px}.client-logo{height:112px;padding:17px}.client-logo:nth-child(3){height:122px}.client-logo:nth-child(4){height:132px}.client-logo img{max-height:83px}.stack-list p{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.client-logo{transition:none}}

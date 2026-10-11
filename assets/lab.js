@@ -23,19 +23,22 @@
     item.querySelector('.lab-status').textContent = text()[complete ? 'done' : 'stopped'];
     refresh(item);
   }
+  function start(item) {
+    item.dataset.labPlayed = 'true';
+    item.classList.remove('lab-running','lab-paused','lab-complete');
+    if (motion.matches) {end(item, true); return;}
+    void item.getBoundingClientRect();
+    item.classList.add('lab-running');
+    item.querySelector('.lab-status').textContent = text().running;
+    active.set(item, setTimeout(() => end(item, true), 4300));
+    refresh(item);
+  }
   cases.forEach(item => {
     item.classList.add('lab-ready');
     refresh(item);
     item.querySelector('.lab-play').addEventListener('click', () => {
       if (active.has(item)) {end(item, false); return;}
-      item.dataset.labPlayed = 'true';
-      item.classList.remove('lab-running','lab-paused','lab-complete');
-      if (motion.matches) {end(item, true); return;}
-      void item.getBoundingClientRect();
-      item.classList.add('lab-running');
-      item.querySelector('.lab-status').textContent = text().running;
-      active.set(item, setTimeout(() => end(item, true), 4300));
-      refresh(item);
+      start(item);
     });
   });
   new MutationObserver(() => cases.forEach(refresh)).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
@@ -44,7 +47,8 @@
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting && active.has(entry.target)) end(entry.target, false);
-    }));
+      if (entry.intersectionRatio >= .25 && !entry.target.dataset.labPlayed && !motion.matches && !document.hidden) start(entry.target);
+    }), {threshold:[0,.25]});
     cases.forEach(item => observer.observe(item));
   }
 })();
